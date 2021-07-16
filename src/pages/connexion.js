@@ -5,6 +5,8 @@ import backgroundConnexion from '../assets/img/image_ready2work.png'
 const Connexion = () => {
     const [mail, setMail] = useState()
     const [password, setPassword] = useState()
+    const [checkbox, setCheckbox] = useState()
+
     function handleChange (event, state, value)  {
      state(event.target.value)
      console.log(value)
@@ -12,17 +14,20 @@ const Connexion = () => {
     }
     return(
         <section className='page_connexion'>
-            <div>
+            <div className='information_content mt-2'>
               <div className='titre_intro_connexion'>
-                <h1>Bienvenue</h1>
-                <span>Rentrez vos identifiants pour avoir accès à l’emploi du temps de vos salles en temps réel!</span>
+                <h1 className='mb-1'>Bienvenue</h1>
+                <p>Rentrez vos identifiants pour avoir accès à l’emploi du temps de vos salles en temps réel!</p>
               </div>
-              <form className='connexion_form'>
-               <InputForm label='Mail' value={mail} type='email' handleChange={event => handleChange(event, setMail, mail)}/>
-               <InputForm label='Mot de passe' value={password} type='password' handleChange={event => handleChange(event, setPassword, password)}/>
+              <form className='connexion_form mt-2'>
+               <InputForm  placeholder='name@domain.com'  className={'input-content mt-2'} label='Mail' value={mail} type='email' handleChange={event => handleChange(event, setMail, mail)}/>
+               <InputForm  placeholder='Au moins 8 caractères' className={'input-content mt-2'} label='Mot de passe' value={password} type='password' handleChange={event => handleChange(event, setPassword, password)}/>
+               <InputForm  className={'mt-2 checkbox'} label='Rester connecté' value={checkbox} type='checkbox' handleChange={event => handleChange(event, setCheckbox, checkbox)}/>
+               <InputForm  className={'mt-2 submit-button'} label='' value={'Se connecter'} type='submit'/>
+
               </form>
             </div>
-            <div>
+            <div className='image_content'>
                 <img src={backgroundConnexion} alt='image ready2'/>
             </div>
         </section>
