@@ -9,17 +9,16 @@
         justify-content: center;
         align-content: center;
         width: 670px;
-        padding:    96px  102px 102px  96px  ;
+        padding: 96px 102px 102px 96px;
         color: $tertiary-colors;
         h1 {
         color: $primary-colors;
         font-size: 60px;
         text-align: left;
         }
-        p {
-        color: $tertiary-colors;
-        font-size: 20px;
-        text-align: left;
+        .subtitle_connexion {
+          text-align: left;
+          font-size: 20px;
         }
         label {
         text-align: left;
@@ -77,6 +76,9 @@
                 }
             }
         }
+        .text-link {
+                color: $primary-colors;
+            }
     }
     .image_content {
         width: 100%;

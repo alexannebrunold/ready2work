@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import InputForm from '../composants/inputForm'
 import backgroundConnexion from '../assets/img/image_ready2work.png'
-import { Link } from 'react-router-dom'
+// import { Link } from 'react-router-dom'
 
 const Connexion = () => {
   const [mail, setMail] = useState()
@@ -18,12 +18,12 @@ const Connexion = () => {
       <div className='information_content mt-2'>
         <div className='titre_intro_connexion'>
           <h1 className='mb-1'>Bienvenue</h1>
-          <p>
+          <p className='subtitle_connexion'>
             Rentrez vos identifiants pour avoir accès à l’emploi du temps de
             vos salles en temps réel!
           </p>
         </div>
-        <form className='connexion_form mt-2'>
+        <form className='connexion_form'>
           <InputForm
             placeholder='name@domain.com'
             className={'input-content mt-2'}
@@ -51,10 +51,15 @@ const Connexion = () => {
             type='submit' />
 
         </form>
-        <div className='text_sous_submit mt-1'>Vous n’avez pas encore de compte?
-          <Link to='/inscription'>Inscrivez-vous dès maintenant</Link></div>
-        <div className='text_sous_submit mt-1'>
-          <Link to='/'>Mot de passe oublié?</Link></div>
+        <div className='font-size-14 mt-1'>
+          Vous n’avez pas encore de compte ?
+          {/* <Link to='/inscription' className='text-link'>Inscrivez-vous dès maintenant</Link> */}
+        Inscrivez-vous dès maintenant
+        </div>
+        <div className='font-size-14 text-link mt-1'>
+          {/* <Link to='/' className='text-link'>Mot de passe oublié?</Link> */}
+          Mot de passe oublié ?
+        </div>
       </div>
       <div className='image_content'>
         <img src={backgroundConnexion} alt='image ready2' />
