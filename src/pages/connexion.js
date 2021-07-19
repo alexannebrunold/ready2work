@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import InputForm from '../composants/inputForm'
 import backgroundConnexion from '../assets/img/image_ready2work.png'
+import { Link } from 'react-router-dom'
 
 const Connexion = () => {
     const [mail, setMail] = useState()
@@ -26,6 +27,8 @@ const Connexion = () => {
                <InputForm  className={'mt-2 submit-button'} label='' value={'Se connecter'} type='submit'/>
 
               </form>
+              <div className='text_sous_submit mt-1'>Vous n’avez pas encore de compte? <Link to='/inscription'>Inscrivez-vous dès maintenant</Link></div>
+              <div className='text_sous_submit mt-1'><Link to='/'>Mot de passe oublié?</Link></div>
             </div>
             <div className='image_content'>
                 <img src={backgroundConnexion} alt='image ready2'/>

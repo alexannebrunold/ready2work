@@ -18,7 +18,7 @@ function App() {
           <Route path="/connexion">
             <Connexion />
           </Route>
-          <Route path="/inscriptions">
+          <Route path="/inscription">
             <Inscription />
           </Route>
           <Route path="/booking">

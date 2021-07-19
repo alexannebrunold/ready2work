@@ -8,14 +8,14 @@ const Booking = () => {
                 <section className='content_menu'>
                     <div className='logo'><Link to='/home'><p>Ready2Work</p></Link></div>
                     <ul>
-                        <li><Link to='/booking'>Mes Réservations</Link></li>
+                        <li className='current_page'><Link to='/booking'>Mes Réservations</Link></li>
                         <li><Link to='/account'>Account</Link></li>
                     </ul>
                 </section>
-                <section>
+                <section className='content_table mt-2'>
                     <div>
-                        <span>Mes Réservations</span>
-                        <Table/>
+                        <h2>Mes Réservations</h2>
+                        <Table className='mt-1'/>
                     </div>
                 </section>
             </section>
