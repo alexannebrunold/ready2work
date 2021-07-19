@@ -1,0 +1,49 @@
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+.reservations-table  {
+  width: 100%;
+  background-color: $white;
+  border: 1px solid grey;
+  border-bottom-width: 0;
+  border-radius: 8px 8px 0 0;
+
+  table {
+    width: 100%;
+
+    thead, tbody {
+      width: 100%;
+
+      tr {
+        border-bottom: 1px solid grey;
+
+        th {
+          padding: 26px 24px 26px 24px;
+          text-align: left;
+          font-size: 14px;
+          font-weight: bold;
+          @media screen and (max-width: 980px) {
+            padding: 26px 16px 26px 16px;
+          }
+        }
+
+        td {
+          padding: 26px 24px 26px 24px;
+          text-align: left;
+          font-size: 14px;
+          vertical-align: middle;
+          @media screen and (max-width: 1024px) {
+            padding: 26px 10px 26px 10px;
+          }
+        }
+
+        &:first-child {
+          border-radius: 8px 8px 0 0;
+        }
+      }
+    }
+  }
+}
