@@ -1,13 +1,16 @@
-import './App.css'
-import Booking from './pages/booking'
-import Connexion from './pages/connexion'
-import Inscription from './pages/inscription'
-import './style/global.scss'
+/*eslint-disable */
+import './App.css';
+import Booking from './pages/booking';
+import Connexion from './pages/connexion';
+import Inscription from './pages/inscription';
+import StudentDashboard from './pages/studentDashboard';
+import './style/global.scss';
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-} from 'react-router-dom'
+  Link
+} from "react-router-dom";
 
 function App() {
   return (
@@ -22,6 +25,9 @@ function App() {
           </Route>
           <Route path="/booking">
             <Booking />
+          </Route>
+          <Route path="/studentDashboard">
+            <StudentDashboard />
           </Route>
         </Switch>
       </Router>

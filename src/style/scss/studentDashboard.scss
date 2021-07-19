@@ -1,0 +1,55 @@
+.studentDashboard-backMap {
+  width: 80vw;
+  height: 78vh;
+  border-left: solid 1px #878685;
+  border-top: solid 1px #878685;
+  border-right: solid 1px #878685;
+  border-radius: 20px 20px 0px 0px;
+  margin-top: 5vh;
+  margin-left: 10vw;
+  
+
+  .studentDashboard-floor {
+    font-size: 25px;
+    color: #878685;
+    text-align: left;
+    margin-left: 3vw;
+    margin-top: 3vh;
+  }
+  
+  .studentDashboard-map {
+    margin-top: 1vh;
+  }
+}
+
+.studentDashboard-scope {
+  width: 100vw;
+  height: 4vh;
+  background: linear-gradient(90deg, rgba(255,209,81,1) 0%, rgba(250,140,40,1) 60%, rgba(255,81,81,1) 100%);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .scope-min {
+    font-size: 20px;
+    color: white;
+    margin-left: 1vw;
+  }
+  .scope-max {
+    font-size: 20px;
+    color: white;
+    margin-right: 1vw;
+  }
+}
+
+.studentDashboard-filterMap {
+  background-color: #FFF0E1;
+  width: 100vw;
+  height: 6vh;
+  display: flex;
+  justify-content: space-evenly;
+
+  div, p {
+    margin-top: 1.5vh;
+  }
+}
