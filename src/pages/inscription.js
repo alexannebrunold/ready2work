@@ -9,11 +9,39 @@ const Inscription = () => {
         const [mail, setMail] = useState()
         const [password, setPassword] = useState()
         const [statut, setStatut] = useState()
+        const [submit, setSubmit] = useState()
+        const [message, setMessage] = useState()
+        const [error, setError] = useState()
     
         function handleChange (event, state, value)  {
          state(event.target.value)
          return value
         }
+        function submitForm(e) {
+            e.preventDefault();
+            setSubmit(true);
+            fetch("https://ready2work-api.herokuapp.com/auth/user/register", {
+              method: 'POST',
+              headers: { 
+                  "access-control-allow-origin" : "*",
+                  'Content-Type': 'application/json' 
+                },
+              body: JSON.stringify({ name:nom, email:mail, password: password})
+            })
+            .then(res => {
+                setSubmit(false);
+                return res.json();
+            })
+            .then(data => {
+               console.log(data);
+               if(data === 'Successful registration') {
+                   window.location = '/connexion'
+               }
+               return !data.hasOwnProperty("error")
+                    ?setMessage(data.success)
+                    :setMessage(data.error), setError(true);
+            });
+          }      
         return(
             <section className='page_inscription'>
                 <div className='information_content mt-2'>
@@ -21,7 +49,7 @@ const Inscription = () => {
                     <h1 className='mb-1'>Inscription</h1>
                     <p>Nous avons besoin de quelques informations pour vous laisser libre accès à la plateforme.</p>
                   </div>
-                  <form className='connexion_form mt-2'>
+                  <form className='connexion_form mt-2' onSubmit={e => submitForm(e)}>
                    <InputForm  placeholder='Leblanc Justine'  className={'input-content mt-2'} label='Nom prénom' value={nom} type='text' handleChange={event => handleChange(event, setNom, nom)}/>
                    <InputForm  placeholder='name@domain.com'  className={'input-content mt-2'} label='Mail' value={mail} type='email' handleChange={event => handleChange(event, setMail, mail)}/>
                    <InputForm  placeholder='Au moins 8 caractères' className={'input-content mt-2'} label='Mot de passe' value={password} type='password' handleChange={event => handleChange(event, setPassword, password)}/>

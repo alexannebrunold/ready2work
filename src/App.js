@@ -7,14 +7,20 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
+  Link,
+  Redirect
 } from "react-router-dom";
 
 function App() {
+  const token = localStorage.getItem('token :')
+  console.log(token)
   return (
     <div className="App">
       <Router>
       <Switch>
+          <Route exact path='/'>
+           {token ? <></> : <Redirect to="/connexion" />}
+          </Route>
           <Route path="/connexion">
             <Connexion />
           </Route>
@@ -22,7 +28,7 @@ function App() {
             <Inscription />
           </Route>
           <Route path="/booking">
-            <Booking />
+            {token ? <Booking /> : <Redirect to="/connexion" />}
           </Route>
         </Switch>
       </Router>
