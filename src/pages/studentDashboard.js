@@ -1,4 +1,4 @@
-import { div } from 'prelude-ls';
+/*eslint-disable */
 import React from 'react';
 import StudentHeader from '../composants/studentHeader';
 import ClassroomInfo from '../composants/classroomInfo';
@@ -9,9 +9,9 @@ const StudentDashboard = () => {
   return (
     <section>
       <StudentHeader />
-      
+
       <div className="studentDashboard-backMap">
-      <p className="studentDashboard-floor">1e étage</p>
+        <p className="studentDashboard-floor">1e étage</p>
         <svg className="studentDashboard-map" width="1131" height="520" viewBox="0 0 1131 685" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path className="classroom-A101" d="M133 0.5H313.188V344.778H133C127.753 344.778 123.5 340.524 123.5 335.278V10C123.5 4.75332 127.753 0.5 133 0.5Z" fill="#FEC348" stroke="white"/>
           <path className="classroom-A103" d="M312.5 160.5H502.188V335.194C502.188 340.441 497.934 344.694 492.688 344.694H312.5V160.5Z" fill="#FD6B3F" stroke="white"/>
@@ -60,19 +60,19 @@ const StudentDashboard = () => {
         <p className="filterMap-title">Trier par :</p>
         <div>
           <input type="checkbox" id="luminausite" name="luminausite" />
-          <label for="luminausite">Luminausité</label>
+          <label htmlFor="luminausite">Luminausité</label>
         </div>
         <div>
           <input type="checkbox" id="sonore" name="sonore" />
-          <label for="sonore">Niveau sonore</label>
+          <label htmlFor="sonore">Niveau sonore</label>
         </div>
         <div>
           <input type="checkbox" checked id="people" name="people" />
-          <label for="people">Taux de fréquentation</label>
+          <label htmlFor="people">Taux de fréquentation</label>
         </div>
         <div>
           <input type="checkbox" id="temperature" name="temperature" />
-          <label for="temperature">Température</label>
+          <label htmlFor="temperature">Température</label>
         </div>
       </div>
       <ClassroomInfo />

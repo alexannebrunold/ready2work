@@ -1,0 +1,40 @@
+{
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true,
+    "eslint.codeActionsOnSave": true,
+  },
+  "eslint.validate": [
+    "javascript"
+  ],
+  "editor.formatOnSave": false,
+  "files.trimTrailingWhitespace": true,
+  "vetur.format.defaultFormatter.js": "vscode-typescript",
+  "javascript.format.semicolons": "remove",
+  "javascript.format.insertSpaceAfterSemicolonInForStatements": false,
+  "typescript.format.insertSpaceAfterSemicolonInForStatements": false,
+  "defaultAssignment": true,
+  "prettier.eslintIntegration": true,
+  "prettier.semi": false,
+  "prettier.trailingComma": "all",
+  "comma-dangle": [
+    2,
+    {
+      "arrays": "always-multiline",
+      "objects": "always-multiline",
+      "imports": "always-multiline",
+      "exports": "always-multiline",
+      "functions": "always-multiline",
+    }
+  ],
+  "css.customData": [
+    ".vscode/css_custom_data.json"
+  ],
+  "css.validate": false,
+  "scss.validate": false,
+  "stylelint.enable": true,
+  "vetur.validation.style": false,
+  "max-len": ["error", { "code": 80,"ignoreTemplateLiterals": true, "ignoreStrings": true, "ignorePattern": "<path([\\s\\S]*?)/>" }],
+
+ "ignorePattern": "d='([\\s\\S]*?)'",
+
+}

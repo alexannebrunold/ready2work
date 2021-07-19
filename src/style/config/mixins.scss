@@ -1,0 +1,5 @@
+@for $px from 0 through 100 {
+  .font-size-x-#{$px} {
+    font-size: #{$px}px;
+  }
+}
