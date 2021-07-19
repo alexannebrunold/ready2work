@@ -1,0 +1,17 @@
+.studentHeader {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 3vh;
+
+
+  .studentHeader-title {
+    font-size: 26px;
+    color: #FA8C28;
+    margin-left: 3vw;
+  }
+  .studentHeader-profil {
+    display: flex;
+    font-size: 14px;
+    color: #252733;
+  }
+}

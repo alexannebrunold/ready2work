@@ -1,0 +1,64 @@
+.classroomInfo {
+  position: absolute;
+  border-bottom: solid 1px #FFF0E1;
+  border-left: solid 1px #FFF0E1;
+  border-top: solid 1px #FFF0E1;
+  border-radius: 20px 0px 0px 20px;
+  right: 0;
+  top: 10vh;
+  width: 3vw;
+  height: 79vh;
+  background-color: white;
+  text-align: left;
+  overflow: hidden;
+
+  .classroomInfo-panel {
+    position: relative;
+    top: 3vh;
+    height: 2.5vh;
+    left: 0.5vw;
+
+  }
+
+  .classroomInfo-favorite {
+    
+    display: flex;
+    justify-content: left;
+
+
+    .favorite-title {
+      font-size: 20px;
+      margin-top: 3vh;
+      margin-left: 3vw;
+    }
+    .favorite-like {
+      width: 2.3vw;
+      margin-left: 0.75vw;
+      margin-top: 2.5vh;
+    }
+  }
+  .favorite-classroom {
+    font-size: 20px;
+    color: #FA8C28;
+    margin-left: 3vw;
+    margin-top: 2vh;
+  }
+  .classroom-unavailable {
+    font-size: 20px;
+    margin-left: 3vw;
+    margin-top: 5vh;
+  }
+  .unavailable-classroom {
+    margin-top: 2.5vh;
+    margin-left: 7vw;
+    
+
+    .CircularProgressbar-text {
+      transform: translate(-20px, 5px);
+    }
+  }
+  .display-none {
+    display: none;
+  }
+}
+
