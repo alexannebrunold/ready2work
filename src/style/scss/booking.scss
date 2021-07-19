@@ -1,0 +1,16 @@
+.page_booking {
+    padding: 50px;
+    .content_menu {
+        display: flex;
+        display: -webkit-flex;
+        display: -moz-box;
+        justify-content: space-between;
+        ul {
+            display: flex;
+            display: -webkit-flex;
+            display: -moz-box;
+            justify-content: space-between;
+            width: 25%;
+        }
+    }
+}
