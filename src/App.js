@@ -1,6 +1,6 @@
-import './App.css';
-import Booking from './pages/booking';
-import Connexion from './pages/connexion';
+import './App.css'
+import Booking from './pages/booking'
+import Connexion from './pages/connexion'
 import Inscription from './pages/inscription'
 import './style/global.scss'
 import {
@@ -8,13 +8,13 @@ import {
   Switch,
   Route,
   Link
-} from "react-router-dom";
+} from 'react-router-dom'
 
 function App() {
   return (
     <div className="App">
       <Router>
-      <Switch>
+        <Switch>
           <Route path="/connexion">
             <Connexion />
           </Route>
@@ -27,7 +27,7 @@ function App() {
         </Switch>
       </Router>
     </div>
-  );
+  )
 }
 
-export default App;
+export default App

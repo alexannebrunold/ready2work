@@ -1,34 +1,31 @@
 .page_inscription {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    flex-direction: row;
+    height: 100vh;
     background-color: #F6F5F5;
     .information_content {
-        grid-column: 1;
-        padding: 10% 20%;
-        h1 {
-        color: $primary-colors;
-        font-size: 60px;
-        text-align: left;
-        }
-        p {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-content: center;
+        width: 670px;
+        padding:    96px  102px 102px  96px  ;
         color: $tertiary-colors;
-        font-size: 20px;
-        text-align: left;
+        h1 {
+          color: $primary-colors;
+          font-size: 60px;
+          text-align: left;
+        }
+        .subtitle_insription {
+          text-align: left;
+          font-size: 20px;
         }
         label {
-        text-align: left;
-        color: $tertiary-colors;
-        font-size: 14px;
+          text-align: left;
+          color: $tertiary-colors;
+          font-size: 14px;
         }
-        .text_sous_submit {
-            font-size: 14px;
-            color: $tertiary-colors;
-            a {
-                color: $primary-colors;
-                text-decoration: none;
-            }
-        }
-        .connexion_form {
+        .inscription_form {
             display: flex;
             display: -webkit-flex;
             display: -moz-box;
@@ -41,6 +38,7 @@
                 flex-direction: row-reverse;
                 align-items: center;
             }
+            margin-top: 60px;
             .input-content {
                 display: flex;
                 display: -webkit-flex;
@@ -70,15 +68,10 @@
                     font-size: 16px;
                 }
             }
-            select {
-               padding: 10px;
-               border-radius: 10px;
-               border: none
-            }
         }
     }
     .image_content {
-        grid-column: 2;
+      width: 100%;
         img {
             height: 100vh;
             width: 100%;
