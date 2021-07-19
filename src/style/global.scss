@@ -1,6 +1,11 @@
-// config
+//Config
 @import './config/reset.scss';
 @import './config/colors.scss';
-//scss global
+@import './config/spacing.scss';
+@import './config/mixins.scss';
+
+//Styles
+@import './scss/texts.scss';
 @import './scss/connexion.scss';
-@import './scss/spacing.scss'
+@import './scss/inscription.scss';
+@import './scss/booking.scss';

@@ -1,0 +1,77 @@
+.page_booking {
+    padding: 50px;
+    .content_menu {
+        display: flex;
+        display: -webkit-flex;
+        display: -moz-box;
+        justify-content: space-between;
+        align-items: center;
+        ul {
+            display: flex;
+            display: -webkit-flex;
+            display: -moz-box;
+            a {
+                color: $primary-colors;
+                text-decoration: none;
+            }
+            li:last-child {
+                margin-left: 30px;
+            }
+        }
+        .logo {
+            a {
+                color: $primary-colors;
+                text-decoration: none;
+                font-weight: bold;
+                font-size: 26px;
+            }
+        }
+        .current_page {
+            font-weight: bold;
+        }
+    }
+    .content_table {
+        margin-left: 1rem;
+        h2 {
+            font-size: 24px;
+            color: $primary-colors;
+            text-align: left;
+        }
+        table {
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.13);
+            width: 100%;
+            thead {
+                tr {
+                    th {
+                        text-align: left;
+                        padding: 20px;
+                        &:last-child {
+                            text-align: center;
+                        }
+                    }
+                }
+            }
+            tr {
+                border-bottom: 1px solid rgba(112, 108, 97, 0.66);
+                td {
+                    text-align: left;
+                    padding: 20px;
+                    &:last-child {
+                        display: flex;
+                        display: -webkit-flex;
+                        display: -moz-box;
+                        justify-content: center;
+                        text-align: center;
+                        svg {
+                            cursor: pointer;
+                            &:last-child {
+                                margin-left: 10px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
