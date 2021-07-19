@@ -1,32 +1,31 @@
 import './App.css'
-// import Booking from './pages/booking'
+import Booking from './pages/booking'
 import Connexion from './pages/connexion'
-// import Inscription from './pages/inscription'
+import Inscription from './pages/inscription'
 import './style/global.scss'
-// import {
-//   BrowserRouter as Router,
-//   Switch,
-//   Route,
-// } from 'react-router-dom'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 
 function App() {
   return (
-    <Connexion/>
-    // <div className="App">
-    //   <Router>
-    //     <Switch>
-    //       <Route path="/connexion">
-    //         <Connexion />
-    //       </Route>
-    //       <Route path="/inscription">
-    //         <Inscription />
-    //       </Route>
-    //       <Route path="/booking">
-    //         <Booking />
-    //       </Route>
-    //     </Switch>
-    //   </Router>
-    // </div>
+    <div className="App">
+      <Router>
+        <Switch>
+          <Route path="/connexion">
+            <Connexion />
+          </Route>
+          <Route path="/inscription">
+            <Inscription />
+          </Route>
+          <Route path="/booking">
+            <Booking />
+          </Route>
+        </Switch>
+      </Router>
+    </div>
   )
 }
 

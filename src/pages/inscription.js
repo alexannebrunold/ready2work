@@ -20,8 +20,8 @@ const Inscription = () => {
         <div className='titre_intro_inscription'>
           <h1 className='mb-1'>Inscription</h1>
           <p className='subtitle_insription'>
-                        Nous avons besoin de quelques informations pour vous laisser libre
-                        accès à la plateforme.
+            Nous avons besoin de quelques informations pour vous laisser libre
+            accès à la plateforme.
           </p>
         </div>
         <form className='inscription_form'>
@@ -67,7 +67,7 @@ const Inscription = () => {
             </select>
           </div>
           <div className='font-size-14 text_sous_submit mt-1'>
-                      Vous avez déjà un compte?
+            Vous avez déjà un compte?
             <Link to='/connexion'>Connectez vous.</Link>
           </div>
         </form>

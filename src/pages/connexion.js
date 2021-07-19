@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import InputForm from '../composants/inputForm'
 import backgroundConnexion from '../assets/img/image_ready2work.png'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const Connexion = () => {
   const [mail, setMail] = useState()
@@ -53,12 +53,16 @@ const Connexion = () => {
         </form>
         <div className='font-size-14 mt-1'>
           Vous n’avez pas encore de compte ?
-          {/* <Link to='/inscription' className='text-link'>Inscrivez-vous dès maintenant</Link> */}
-        Inscrivez-vous dès maintenant
+          <Link
+            to='/inscription'
+            className='text-link'>
+            Inscrivez-vous dès maintenant
+          </Link>
         </div>
         <div className='font-size-14 text-link mt-1'>
-          {/* <Link to='/' className='text-link'>Mot de passe oublié?</Link> */}
-          Mot de passe oublié ?
+          <Link to='/' className='text-link'>
+            Mot de passe oublié ?
+          </Link>
         </div>
       </div>
       <div className='image_content'>
