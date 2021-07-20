@@ -1,5 +1,6 @@
 //Config
 @import './config/reset.scss';
+@import './config/global.scss';
 @import './config/colors.scss';
 @import './config/spacing.scss';
 @import './config/mixins.scss';
@@ -9,7 +10,7 @@
 @import './scss/connexion.scss';
 @import './scss/inscription.scss';
 @import './scss/booking.scss';
-
 @import './scss/studentHeader.scss';
 @import './scss/studentDashboard.scss';
 @import './scss/classroomInfo.scss';
+@import './scss/account.scss';
