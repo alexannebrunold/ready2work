@@ -1,15 +1,32 @@
+.account_page {
+  padding-left: 50px;
+  padding-right: 50px;
+  color: $primary-color;
+  font-size: 24px;
+}
+
 .header {
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  &_link {
+    color: $primary-color;
+    outline: none;
+    text-decoration: none;
+    font-weight: normal;
+    &:hover {
+      font-weight: 600;
+    }
+  }
 }
 
 .reservations-table  {
   width: 100%;
   background-color: $white;
-  border: 1px solid grey;
+  border: 1px solid rgba(0, 0, 0, 0.13);
   border-bottom-width: 0;
-  border-radius: 8px 8px 0 0;
+  border-radius: 10px 10px 0 0;
+  color: $black;
 
   table {
     width: 100%;
@@ -18,12 +35,12 @@
       width: 100%;
 
       tr {
-        border-bottom: 1px solid grey;
+        border-bottom: 1px solid rgba(112, 108, 97, 0.66);
 
         th {
           padding: 26px 24px 26px 24px;
           text-align: left;
-          font-size: 14px;
+          font-size: 24px;
           font-weight: bold;
           @media screen and (max-width: 980px) {
             padding: 26px 16px 26px 16px;
@@ -33,7 +50,7 @@
         td {
           padding: 26px 24px 26px 24px;
           text-align: left;
-          font-size: 14px;
+          font-size: 24px;
           vertical-align: middle;
           @media screen and (max-width: 1024px) {
             padding: 26px 10px 26px 10px;
