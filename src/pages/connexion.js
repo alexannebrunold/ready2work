@@ -63,15 +63,4 @@ const Connexion = () => {
                <InputForm  className={'mt-2 checkbox'} label='Rester connecté' value={checkbox} type='checkbox' handleChange={event => handleChange(event, setCheckbox, checkbox)}/>
                <InputForm  className={'mt-2 submit-button'} label='' value={'Se connecter'} type='submit'/>
 
-              </form>
-              <div className='text_sous_submit mt-1'>Vous n’avez pas encore de compte? <Link to='/inscription'>Inscrivez-vous dès maintenant</Link></div>
-              <div className='text_sous_submit mt-1'><Link to='/'>Mot de passe oublié?</Link></div>
-            </div>
-            <div className='image_content'>
-                <img src={backgroundConnexion} alt='image ready2'/>
-            </div>
-        </section>
-    )
-}
-
 export default Connexion
