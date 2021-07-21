@@ -6,19 +6,26 @@ const TeacherDashboard = () => {
   const [isModalDisplayed, changeStateModal] = useState(false)
 
   function displayedModal() {
-    console.log('isModalDisplayed', isModalDisplayed, !isModalDisplayed)
     return changeStateModal(!isModalDisplayed)
   }
 
-  function handler() {
+  const childToParent = () => {
     return changeStateModal(!isModalDisplayed)
   }
 
   return (
-    <div className='x'>
-
-      <BaseModal  modalIsDisplayed={isModalDisplayed} />
-      <button onClick={displayedModal} action={handler}>Clique moi</button>
+    <div className='container'>
+      <div className={`
+        ${isModalDisplayed === true
+      ? 'modal-container modal-visible'
+      : 'modal-invisible'}`}>
+        <BaseModal modalIsDisplayed={isModalDisplayed} childToParent={childToParent} />
+      </div>
+      <button
+        onClick={displayedModal}
+      >
+        Clique moi
+      </button>
     </div>
   )
 }

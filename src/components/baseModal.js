@@ -1,16 +1,13 @@
 import React from 'react'
 
-const BaseModal = (modalIsDisplayed, action) => {
-
-  console.log(modalIsDisplayed.modalIsDisplayed)
+const BaseModal = (props) => {
 
   return (
     <div
-    // eslint-disable-next-line react/no-string-refs
       // ref='modal'
       aria-hidden='true'
       className={`'modal-container '
-        ${modalIsDisplayed.modalIsDisplayed ? 'modal-visible' : 'modal-invisible'}`}
+        ${props.modalIsDisplayed === true ? 'modal-visible' : 'modal-invisible'}`}
     >
       <div
         className='modal-overlay'
@@ -29,13 +26,14 @@ const BaseModal = (modalIsDisplayed, action) => {
           type='button'
           aria-label='Fermer'
           className='button-close'
-          onClick={action}
+          onClick={() => props.childToParent()}
         >
           {/* <BaseIcon
           className='icon-blue cursor-pointer'
           alt='close icon'
           href='#cross'
         /> */}
+          Close Modal
         </button>
         <slot />
       </div>
