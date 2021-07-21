@@ -3,7 +3,7 @@ import './App.css';
 import Booking from './pages/booking';
 import Connexion from './pages/connexion';
 import Inscription from './pages/inscription';
-import StudentDashboard from './pages/studentDashboard';
+import ClassroomMap from './pages/classroomMap';
 import './style/global.scss';
 import {
   BrowserRouter as Router,
@@ -26,8 +26,8 @@ function App() {
           <Route path="/booking">
             <Booking />
           </Route>
-          <Route path="/studentDashboard">
-            <StudentDashboard />
+          <Route path="/classroomMap">
+            <ClassroomMap />
           </Route>
         </Switch>
       </Router>
