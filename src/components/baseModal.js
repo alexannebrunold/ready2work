@@ -1,5 +1,5 @@
 import React from 'react'
-
+import closeCross from '../assets/img/close-cross.svg'
 const BaseModal = (props) => {
 
   return (
@@ -28,12 +28,8 @@ const BaseModal = (props) => {
           className='button-close'
           onClick={() => props.childToParent()}
         >
-          {/* <BaseIcon
-          className='icon-blue cursor-pointer'
-          alt='close icon'
-          href='#cross'
-        /> */}
-          Close Modal
+          <img src={closeCross} alt='button-close'/>
+
         </button>
         <slot />
       </div>
