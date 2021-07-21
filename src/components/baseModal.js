@@ -31,7 +31,7 @@ const BaseModal = (props) => {
           <img src={closeCross} alt='button-close'/>
 
         </button>
-        <slot />
+        {props.children}
       </div>
     </div>
   )

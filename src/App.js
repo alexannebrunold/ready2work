@@ -12,13 +12,14 @@ import './style/global.scss';
 //   Link,
 //   Redirect
 // } from "react-router-dom";
-import TeacherDasboard from './pages/teacherDashboard'
+// import TeacherDasboard from './pages/teacherDashboard'
+import ModalStudent from './components/modalStudent'
 
 function App() {
   const token = localStorage.getItem('token :')
   return (
-    <TeacherDasboard />
-    /*<div className="App">
+    <ModalStudent/>
+   /*<div className="App">
 
        <Router>
       <Switch>

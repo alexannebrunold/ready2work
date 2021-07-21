@@ -57,10 +57,8 @@
 .modal-card {
   padding: 24px;
   overflow-y: auto;
-  width: 1028px;
-  height: 200px;
-  max-height: 976px;
   border-radius: 8px;
+  width: 80vw;
   vertical-align: middle;
   position: inherit;
   background-color: $white;
@@ -96,5 +94,87 @@
   to {
     transform: translateY(1000px);
     visibility: hidden;
+  }
+}
+
+.CircularProgressbar {
+  width: 98px;
+  height: 98px;
+}
+
+.invite_content  {
+  text-align: left;
+  color: $tertiary-colors;
+  font-size: 20px;
+  .date_content {
+    display: -moz-box;
+    display: flex;
+    display: -webkit-flex;
+    div:last-child {
+      margin-left: 1rem;
+    }
+  }
+  input {
+    padding: 10px;
+    border: 1px solid rgba(246, 204, 164, 1);
+    margin-left: 1rem;
+    color: $tertiary-colors;
+    &::placeholder{
+        color : #B2B1B1
+    }
+}
+  .mail_content {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-box;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      display: -webkit-flex;
+      display: -moz-box;
+      align-items: center;
+    }
+    a {
+      text-decoration: none;
+      color: $primary-colors;
+      white-space: nowrap;
+    }
+    .add {
+      margin-left: 1rem;
+    }
+  }
+  .mail {
+    width: 90%;
+    label {
+      white-space: nowrap;
+    }
+    input {
+      width: 100%;
+    }
+  }
+  .submit {
+    border: none;
+    margin-left: unset;
+    color: $white;
+    border-radius: 20px;
+    background: linear-gradient(268.31deg, #FA8C28 33.09%, #F7CCA4 112.97%);
+  }
+}
+
+.header_content {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-box;
+  flex-direction: column;
+  .title {
+    color: $primary-colors;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .statut {
+    margin-top: 10px;
+    color: $primary-colors;
+    font-size: 20px;
   }
 }
