@@ -1,0 +1,180 @@
+.modal-container {
+  transform: none;
+  display: none;
+  position: relative;
+  left: calc(-50vw + 50%);
+  width: 100vw;
+}
+
+.container {
+  height: 100vh;
+  width: 100vw;
+}
+
+.modal-visible {
+  animation-duration: 0.3s;
+  animation-name: slideup;
+  animation-duration: inherit;
+  animation-name: inherit;
+  position: fixed;
+  z-index: 10;
+  overflow-y: auto;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-invisible {
+  z-index: -10;
+  visibility: hidden;
+  animation-duration: 0.3s;
+  animation-name: slidedown;
+}
+
+.modal-overlay {
+  position: fixed;
+  background-color: $background-light;
+  width: 100vw;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  --tw-translate-x: 0;
+  --tw-translate-y: 0;
+  --tw-rotate: 0;
+  --tw-skew-x: 0;
+  --tw-skew-y: 0;
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  transform: translateX(var(--tw-translate-x)) translateY(var(--tw-translate-y)) rotate(var(--tw-rotate)) skewX(var(--tw-skew-x)) skewY(var(--tw-skew-y)) scaleX(var(--tw-scale-x)) scaleY(var(--tw-scale-y));
+}
+
+.modal-card {
+  padding: 24px;
+  overflow-y: auto;
+  border-radius: 8px;
+  width: 80vw;
+  vertical-align: middle;
+  position: inherit;
+  background-color: $white;
+}
+
+.button-close {
+  position: absolute;
+  right: 24px;
+  height: fit-content;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(1000px);
+    visibility: hidden;
+  }
+
+  to {
+    transform: translateY(0);
+    visibility: visible;
+  }
+}
+
+@keyframes slidedown {
+  from {
+    transform: translateY(0);
+    visibility: visible;
+  }
+50% {
+  transform: translateY(50px);
+
+}
+  to {
+    transform: translateY(1000px);
+    visibility: hidden;
+  }
+}
+
+.CircularProgressbar {
+  width: 98px;
+  height: 98px;
+}
+
+.invite_content  {
+  text-align: left;
+  color: $tertiary-colors;
+  font-size: 20px;
+  .date_content {
+    display: -moz-box;
+    display: flex;
+    display: -webkit-flex;
+    div:last-child {
+      margin-left: 1rem;
+    }
+  }
+  input {
+    padding: 10px;
+    border: 1px solid rgba(246, 204, 164, 1);
+    margin-left: 1rem;
+    color: $tertiary-colors;
+    &::placeholder{
+        color : #B2B1B1
+    }
+}
+  .mail_content {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-box;
+    justify-content: space-between;
+    align-items: center;
+    div {
+      display: flex;
+      display: -webkit-flex;
+      display: -moz-box;
+      align-items: center;
+    }
+    a {
+      text-decoration: none;
+      color: $primary-colors;
+      white-space: nowrap;
+    }
+    .add {
+      margin-left: 1rem;
+    }
+  }
+  .mail {
+    width: 90%;
+    label {
+      white-space: nowrap;
+    }
+    input {
+      width: 100%;
+    }
+  }
+  .submit {
+    border: none;
+    margin-left: unset;
+    color: $white;
+    border-radius: 20px;
+    background: linear-gradient(268.31deg, #FA8C28 33.09%, #F7CCA4 112.97%);
+  }
+}
+
+.header_content {
+  display: flex;
+  display: -webkit-flex;
+  display: -moz-box;
+  flex-direction: column;
+  .title {
+    color: $primary-colors;
+    font-size: 30px;
+    font-weight: bold;
+  }
+  .statut {
+    margin-top: 10px;
+    color: $primary-colors;
+    font-size: 20px;
+  }
+}

@@ -1,24 +1,27 @@
 /*eslint-disable */
 import './App.css';
-import Booking from './pages/booking';
-import Connexion from './pages/connexion';
-import Inscription from './pages/inscription';
-import StudentDashboard from './pages/studentDashboard';
+// import Booking from './pages/booking';
+// import Connexion from './pages/connexion';
+// import Inscription from './pages/inscription';
+// import StudentDashboard from './pages/studentDashboard';
 import './style/global.scss';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link,
-  Redirect
-} from "react-router-dom";
+// import {
+//   BrowserRouter as Router,
+//   Switch,
+//   Route,
+//   Link,
+//   Redirect
+// } from "react-router-dom";
+// import TeacherDasboard from './pages/teacherDashboard'
+import ModalStudent from './components/modalStudent'
 
 function App() {
   const token = localStorage.getItem('token :')
-  console.log(token)
   return (
-    <div className="App">
-      <Router>
+    <ModalStudent/>
+   /*<div className="App">
+
+       <Router>
       <Switch>
           <Route exact path='/'>
            {token ? <></> : <Redirect to="/connexion" />}
@@ -37,7 +40,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </div>
+    </div>*/
   )
 }
 
