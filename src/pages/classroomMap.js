@@ -2,8 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import StudentHeader from '../components/studentHeader';
 import ClassroomInfo from '../components/classroomInfo';
-import '../style/global.scss';
-import ClassroomMapFilter from '../composants/classroomMapFIlter'
+// import StudentHeader from '../composants/studentHeader';
 
 
 const ClassroomMap = () => {

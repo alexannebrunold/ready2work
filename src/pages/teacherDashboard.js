@@ -8,8 +8,6 @@ import TemperatureRates from '../components/temperatureRates'
 import moment from 'moment'
 
 const TeacherDashboard = ({ token }) => {
-
-  const number = 106
   const statut = 'reservée'
   const [isModalDisplayed, changeStateModal] = useState(false)
   const [futuresReservations, setFuturesReservations] = useState()
@@ -20,6 +18,10 @@ const TeacherDashboard = ({ token }) => {
   const [submit, setSubmit] = useState()
   const [message, setMessage] = useState()
   const [error, setError] = useState()
+  const [brigthnessForCurrentRoom, setBrightnessForCurrentRoom] = useState()
+  const [roomNumber, setRoomNumber] = useState()
+  const [noiseForCurrentRoom, setNoiseForCurrentRoom] = useState()
+  const [temperatureForCurrentRoom, setTemperatureForCurrentRoom] = useState()
 
   function handleChange(event, state, value) {
     state(event.target.value)
@@ -95,7 +97,12 @@ const TeacherDashboard = ({ token }) => {
       })
       .then(
         (result) => {
+          console.log(result.brightness.value);
           setInformationsForCurrentRoom(result)
+          setBrightnessForCurrentRoom(result.brightness.value)
+          setRoomNumber(result.room.value)
+          setNoiseForCurrentRoom(result.noise.value)
+          setTemperatureForCurrentRoom(result.temperature.value)
         },
         (error) => {
           console.log(error)
@@ -133,13 +140,12 @@ const TeacherDashboard = ({ token }) => {
 
   useEffect(() => {
     if (isModalDisplayed === true) {
-      getFuturesReservationsForCurrentRoom()
+      // getFuturesReservationsForCurrentRoom()
       getInformationsForCurrentRoom()
 
     }
   }, [isModalDisplayed])
 
-  console.log('information lol', futuresReservations)
   return (
     <div className='container'>
       <div className={`
@@ -150,20 +156,23 @@ const TeacherDashboard = ({ token }) => {
           modalIsDisplayed={isModalDisplayed}
           childToParent={childToParent}
         >
-          <h1>Salle {number}</h1>
+          <h1 className='title'>Salle {roomNumber}</h1>
           <p>Statut : {futuresReservations? null :statut}</p>
 
           {isModalDisplayed === true ?
             <div className='rates'>
-              <BrightnessRates modalIsDisplayed={isModalDisplayed} brightnessRate={informationsForCurrentRoom} />
-              <NoiseRates modalIsDisplayed={isModalDisplayed} />
-              <TemperatureRates modalIsDisplayed={isModalDisplayed} />
+              <BrightnessRates
+                modalIsDisplayed={isModalDisplayed}
+                brightnessRate={brigthnessForCurrentRoom}
+              />
+              <NoiseRates modalIsDisplayed={isModalDisplayed} noiseRate={noiseForCurrentRoom}/>
+              <TemperatureRates modalIsDisplayed={isModalDisplayed} temperatureRates={temperatureForCurrentRoom}/>
             </div>
             : <></>
           }
 
 
-          <p className='mt-1'>
+          <p className='mt-1 text-explication'>
             Cette salle est idéale pour travailler en groupe, 0 excuses pour ne pas être
             productif !
           </p>

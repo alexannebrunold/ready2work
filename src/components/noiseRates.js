@@ -5,16 +5,15 @@ import midSound from '../assets/img/mid-sound.svg'
 import highSound from '../assets/img/high-sound.svg'
 
 const NoiseRates = (props) => {
-  const data = 'low'
   const [imgSrc, setImgSrc] = useState('')
 
   function changeImage() {
-    switch (data) {
-    case 'low':
+    switch (props.noiseRate !== undefined) {
+    case props.noiseRate < 40:
       return setImgSrc(lowSound)
-    case 'mid':
+    case 40 > props.noiseRate < 80:
       return setImgSrc(midSound)
-    case 'high':
+    case props.noiseRate > 80:
       return setImgSrc(highSound)
     }
   }
