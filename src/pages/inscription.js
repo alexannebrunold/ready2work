@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState } from 'react'
 import InputForm from '../components/inputForm'
 import backgroundInscription from '../assets/img/image_ready2work.png'
@@ -48,7 +49,7 @@ const Inscription = () => {
           <h1 className='mb-1'>Inscription</h1>
           <p>Nous avons besoin de quelques informations pour vous laisser libre accès à la plateforme.</p>
         </div>
-        <form className='connexion_form mt-2' onSubmit={e => submitForm(e)}>
+        <form className='inscription_form mt-2' onSubmit={e => submitForm(e)}>
           <InputForm  placeholder='Leblanc Justine'  className={'input-content mt-2'} label='Nom prénom' value={nom} type='text' handleChange={event => handleChange(event, setNom, nom)}/>
           <InputForm  placeholder='name@domain.com'  className={'input-content mt-2'} label='Mail' value={mail} type='email' handleChange={event => handleChange(event, setMail, mail)}/>
           <InputForm  placeholder='Au moins 8 caractères' className={'input-content mt-2'} label='Mot de passe' value={password} type='password' handleChange={event => handleChange(event, setPassword, password)}/>
@@ -59,12 +60,12 @@ const Inscription = () => {
               <option>Un Professeur</option>
             </select>
           </div>
-          <InputForm  className={'mt-2 submit-button'} label='' value={'Se connecter'} type='submit'/>
+          <InputForm  className={'mt-2 submit-button'} label='' value={'Inscription'} type='submit'/>
         </form>
         <div className='text_sous_submit mt-1'>Vous avez déjà un compte? <Link to='/connexion'>Connectez vous.</Link></div>
       </div>
       <div className='image_content'>
-        <img src={backgroundConnexion} alt='image ready2'/>
+        <img src={backgroundInscription} alt='image ready2'/>
       </div>
     </section>
   )

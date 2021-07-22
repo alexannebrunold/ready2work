@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState, useEffect } from 'react'
 import lowTemperature from '../assets/img/low-temperature.svg'
 import midTemperature from '../assets/img/mid-temperature.svg'

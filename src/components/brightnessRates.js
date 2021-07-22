@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState, useEffect } from 'react'
 import sunLowBrigthness from '../assets/img/sun-low-brigthness.svg'
 import midLowBrigthness from '../assets/img/sun-mid-brightness.svg'

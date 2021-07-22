@@ -1,3 +1,4 @@
+/*eslint-disable */
 import './App.css'
 import Booking from './pages/booking'
 import Connexion from './pages/connexion'
@@ -10,6 +11,7 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
+import TeacherDashboard from './pages/teacherDashboard'
 
 function App() {
   const token = localStorage.getItem('token :')
@@ -18,19 +20,19 @@ function App() {
       <Router>
         <Switch>
           <Route exact path='/'>
-            {token ? <></> : <Redirect to="/connexion" />}
-          </Route>
-          <Route path="/connexion">
             <Connexion />
           </Route>
           <Route path="/inscription">
             <Inscription />
           </Route>
           <Route path="/booking">
-            {token ? <Booking /> : <Redirect to="/connexion" />}
+            {token ? <Booking token={token}/> : <Redirect to="/" />}
           </Route>
           <Route path="/studentDashboard">
-            <StudentDashboard />
+          {token ? <StudentDashboard /> : <Redirect to="/" />}
+          </Route>
+          <Route path="/teacherDashboard">
+          {token ? <TeacherDashboard token={token}/> : <Redirect to="/" />}
           </Route>
         </Switch>
       </Router>

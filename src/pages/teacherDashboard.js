@@ -2,18 +2,32 @@
 import React, { useState, useEffect } from 'react'
 import BaseModal from '../components/baseModal'
 import BrightnessRates from '../components/brightnessRates'
+import InputForm from '../components/inputForm'
 import NoiseRates from '../components/noiseRates'
 import TemperatureRates from '../components/temperatureRates'
+import moment from 'moment'
 
-const TeacherDashboard = () => {
+const TeacherDashboard = ({ token }) => {
 
   const number = 208
   const statut = 'reservée'
-  const token = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiYjk2MDVjMzZlOThlMzAxMTdhNjk1MTc1NjkzODY4MzAyMDJiMmQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiYWx4IiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL21ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1ZCI6Im1ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1dGhfdGltZSI6MTYyNjk0NzAxMCwidXNlcl9pZCI6IlV1eDlKREJWMFVTZHAwZjVLZVo0TGtGZHNUaDIiLCJzdWIiOiJVdXg5SkRCVjBVU2RwMGY1S2VaNExrRmRzVGgyIiwiaWF0IjoxNjI2OTQ3MDEwLCJleHAiOjE2MjY5NTA2MTAsImVtYWlsIjoiYWx4QGdtYWlsLmNvbSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiZmlyZWJhc2UiOnsiaWRlbnRpdGllcyI6eyJlbWFpbCI6WyJhbHhAZ21haWwuY29tIl19LCJzaWduX2luX3Byb3ZpZGVyIjoicGFzc3dvcmQifX0.XrZ9nvRPXLuZ8WAiRMTdSLY_Ky3BzZVf4GjYi9SJt13sw46yVtRsm7PlAuaJ09QdO7EQygVpgsE_IvAOa25JL2IG_nLlGCFYw5lbfqb9Cnn4Jln4tH8tCAR57LGZVXxrxGmqK9rHbCvujqBWeZ8h1HOggzOlhC1G0C-dwtJn2jV9NFCT_SMOJETRAmGZdKPTyr0bxDntCuQdRe5Kf0IvrSKVeXHpdbvKpfsjehrRWUlCy3cTbez896IcPafvQFa5wKE5HVkz7uVcWY1X6FBXkops9LIcdLS-w4q2Fepiv7y-MjXUJcQaz5T_UEOWbvvLJBEIlfkModvxT6oIrC9YnQ"
   const [isModalDisplayed, changeStateModal] = useState(false)
   const [futuresReservations, setFuturesReservations] = useState()
   const [informationsForCurrentRoom, setInformationsForCurrentRoom] = useState()
+  const [date, setDate] = useState()
+  const [time, setTime] = useState()
+  const [checkbox, setCheckbox] = useState()
+  const [submit, setSubmit] = useState()
+  const [message, setMessage] = useState()
+  const [error, setError] = useState()
 
+  function handleChange(event, state, value) {
+    state(event.target.value)
+    console.log(event.target.value)
+    return value
+  }
+
+  console.log(token)
 
   function displayedModal() {
     return changeStateModal(!isModalDisplayed)
@@ -37,7 +51,7 @@ const TeacherDashboard = () => {
       })
       .then(
         (result) => {
-          setFuturesReservations([result])
+          setFuturesReservations(result.length > 0 ? result : null)
         },
         (error) => {
           console.log(error)
@@ -67,6 +81,56 @@ const TeacherDashboard = () => {
       )
   }
 
+  function getInformationsForCurrentRoom() {
+    fetch('https://ready2work-api.herokuapp.com/api/room/B106', {
+      method: 'GET',
+      headers: {
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then(
+        (result) => {
+          setInformationsForCurrentRoom(result)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+
+  function submitForm(e) {
+    e.preventDefault()
+    setSubmit(true)
+    fetch('https://ready2work-api.herokuapp.com/api/reservation/B106', {
+      method: 'POST',
+      headers: {
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        'Cache-Control': 'no-cache'
+      },
+      body: JSON.stringify({ date: date, time: time })
+    })
+      .then(res => {
+        setSubmit(false)
+        return res.json()
+      })
+      .then(data => {
+        console.log(data)
+        if (data.success) {
+
+        }
+        return !data.hasOwnProperty('error')
+          ? setMessage(data.success)
+          : setMessage(data.error), setError(true)
+      })
+  }
+
   useEffect(() => {
     if (isModalDisplayed === true) {
       getFuturesReservationsForCurrentRoom()
@@ -75,13 +139,13 @@ const TeacherDashboard = () => {
     }
   }, [isModalDisplayed])
 
-  console.log('informationsForCurrentRoom', informationsForCurrentRoom)
+  console.log('information lol', futuresReservations)
   return (
     <div className='container'>
       <div className={`
         ${isModalDisplayed === true
-      ? 'modal-container modal-visible'
-      : 'modal-invisible'}`}>
+          ? 'modal-container modal-visible'
+          : 'modal-invisible'}`}>
         <BaseModal
           modalIsDisplayed={isModalDisplayed}
           childToParent={childToParent}
@@ -91,11 +155,11 @@ const TeacherDashboard = () => {
 
           {isModalDisplayed === true ?
             <div className='rates'>
-              <BrightnessRates modalIsDisplayed={isModalDisplayed} brightnessRate={informationsForCurrentRoom}/>
+              <BrightnessRates modalIsDisplayed={isModalDisplayed} brightnessRate={informationsForCurrentRoom} />
               <NoiseRates modalIsDisplayed={isModalDisplayed} />
               <TemperatureRates modalIsDisplayed={isModalDisplayed} />
             </div>
-          : <></>
+            : <></>
           }
 
 
@@ -104,17 +168,45 @@ const TeacherDashboard = () => {
             productif !
           </p>
 
-          <div className='futures-reservations'>
+          <div className='futures-reservations mt-1'>
             <h3>Future réservations de la salle : </h3>
-            {isModalDisplayed === true && futuresReservations !== undefined ?
-              <ul>
-              {futuresReservations.map((infos) =>
-                <li key={infos}>Réservée le {infos} à heure par userName</li>
-              )
-              }
-            </ul>
+            {isModalDisplayed === true && futuresReservations ?
+              <div className='row_reservation_content'>
+                {futuresReservations.map((infos) =>
+                  <ul key={infos} className='mt-1'>
+                    <li>Réservée le</li>
+                    <li>{moment(infos.date).format('DD/MM/YYYY')}</li>
+                    <li>à</li>
+                    <li>{infos.time}</li>
+                    <li>heure par userName</li>
+                  </ul>
+                )
+                }
+              </div>
               : <></>
             }
+            <form className='mt-1' onSubmit={e => submitForm(e)} id='form_modal_prof'>
+              <div className='form_date_content'>
+                <h3>Réserver la salle :</h3>
+                <InputForm value={date} type='date' label='Le' handleChange={event => handleChange(event, setDate, date)} />
+                <InputForm value={time} type='time' label='à' handleChange={event => handleChange(event, setTime, time)} />
+              </div>
+              <div>
+                <InputForm
+                  className={'mt-2 checkbox'}
+                  label='Je souhaite inviter des élèves'
+                  value={checkbox}
+                  type='checkbox'
+                  handleChange={event => handleChange(event, setCheckbox, checkbox)}
+                />
+                <InputForm
+                  className={'mt-2 submit-button'}
+                  label=''
+                  value={'Confirmer'}
+                  type='submit'
+                />
+              </div>
+            </form>
 
 
           </div>
