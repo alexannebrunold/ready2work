@@ -28,11 +28,11 @@ function App() {
           <Route path="/booking">
             {token ? <Booking token={token}/> : <Redirect to="/" />}
           </Route>
+          <Route path="/studentDashboard">
+          {token ? <ClassroomMap /> : <Redirect to="/" />}
+          </Route>
           <Route path="/teacherDashboard">
           {token ? <TeacherDashboard token={token}/> : <Redirect to="/" />}
-          </Route>
-          <Route path="/classroomMap">
-           {token ? <ClassroomMap /> : <Redirect to="/" />}
           </Route>
         </Switch>
       </Router>

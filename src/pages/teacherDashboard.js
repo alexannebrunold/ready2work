@@ -8,7 +8,7 @@ import TemperatureRates from '../components/temperatureRates'
 import moment from 'moment'
 
 const TeacherDashboard = ({ token }) => {
-
+  const statut = 'reservée'
   const [isModalDisplayed, changeStateModal] = useState(false)
   const [futuresReservations, setFuturesReservations] = useState()
   const [informationsForCurrentRoom, setInformationsForCurrentRoom] = useState()
@@ -157,6 +157,7 @@ const TeacherDashboard = ({ token }) => {
           childToParent={childToParent}
         >
           <h1 className='title'>Salle {roomNumber}</h1>
+          <p>Statut : {futuresReservations? null :statut}</p>
 
           {isModalDisplayed === true ?
             <div className='rates'>

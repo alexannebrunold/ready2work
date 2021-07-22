@@ -4,9 +4,9 @@ import React from 'react'
 const TableRow = ({salle, date, time}) => {
     return (
         <tr>
-          <td>A007</td>
-          <td>12/08/2021</td>
-          <td>17h30 à 19h</td>
+          <td>{salle}</td>
+          <td>{date}</td>
+          <td>{time}</td>
           <td>
             <svg
               width="18"
