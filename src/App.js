@@ -1,9 +1,10 @@
-import './App.css'
-import Booking from './pages/booking'
-import Connexion from './pages/connexion'
-import Inscription from './pages/inscription'
-import StudentDashboard from './pages/studentDashboard'
-import './style/global.scss'
+/*eslint-disable */
+import './App.css';
+import Booking from './pages/booking';
+import Connexion from './pages/connexion';
+import Inscription from './pages/inscription';
+import ClassroomMap from './pages/classroomMap';
+import './style/global.scss';
 import {
   BrowserRouter as Router,
   Switch,
@@ -29,8 +30,8 @@ function App() {
           <Route path="/booking">
             {token ? <Booking /> : <Redirect to="/connexion" />}
           </Route>
-          <Route path="/studentDashboard">
-            <StudentDashboard />
+          <Route path="/classroomMap">
+            <ClassroomMap />
           </Route>
         </Switch>
       </Router>
