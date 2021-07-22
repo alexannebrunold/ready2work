@@ -5,8 +5,7 @@ import '../style/global.scss';
 import LikeLogo from '../assets/img/like.svg';
 import ArrowLeft from '../assets/img/arrow-left.svg';
 
-const ClassroomInfo = () => {
-  const unavailableClassroom = 60;
+const ClassroomInfo = (props) => {
   const [openPanel, setOpenPanel] = useState(false);
 
   function panelIsOpen() {
@@ -20,10 +19,13 @@ const ClassroomInfo = () => {
       setOpenPanel(true);
     }
   }
-  useEffect(() => {
-    panelIsOpen();
-  }, []);
 
+  function wrapperFunction() {
+    panelIsOpen();
+  }
+  useEffect((props) => {
+    wrapperFunction();
+  }, []);
 
   return(
     <div className="classroomInfo">
@@ -41,8 +43,8 @@ const ClassroomInfo = () => {
       <p className="classroom-unavailable">Nombre de salle occupées actuellement</p>
       <div className="unavailable-classroom" style={{ width: 130, height: 130 }}>
         <CircularProgressbar
-          value={ unavailableClassroom }
-          text={`${ unavailableClassroom }%`}
+          value={ props.unavailableClassroom }
+          text={`${ props.unavailableClassroom }%`}
           minValue={0}
           maxValue={17}
           styles={buildStyles(
@@ -51,7 +53,7 @@ const ClassroomInfo = () => {
               strokeLinecap: 'butt',
               textSize: '20px',
               pathTransitionDuration: 0.5,
-              pathColor: `rgba(252, 198, 146, ${unavailableClassroom / 100})`,
+              pathColor: `rgba(252, 198, 146, ${ props.unavailableClassroom / 100 })`,
               textColor: '#706C61',
               trailColor: '#d6d6d6',
               backgroundColor: '#FA8C28',
@@ -62,8 +64,8 @@ const ClassroomInfo = () => {
       <p className="classroom-unavailable">Nombre de salles réservées par les professeurs:</p>
       <div className="unavailable-classroom" style={{ width: 130, height: 130 }}>
         <CircularProgressbar
-          value={ unavailableClassroom }
-          text={`${ unavailableClassroom }%`}
+          value={ props.unavailableClassroom }
+          text={`${ props.unavailableClassroom }%`}
           minValue={0}
           maxValue={17}
           styles={buildStyles(
@@ -72,7 +74,7 @@ const ClassroomInfo = () => {
               strokeLinecap: 'butt',
               textSize: '20px',
               pathTransitionDuration: 0.5,
-              pathColor: `rgba(252, 198, 146, ${unavailableClassroom / 100})`,
+              pathColor: `rgba(252, 198, 146, ${ props.unavailableClassroom / 100 })`,
               textColor: '#706C61',
               trailColor: '#d6d6d6',
               backgroundColor: '#FA8C28',
