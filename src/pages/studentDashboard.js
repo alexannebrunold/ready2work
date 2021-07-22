@@ -1,7 +1,7 @@
 /*eslint-disable */
 import React from 'react';
-import StudentHeader from '../composants/studentHeader';
-import ClassroomInfo from '../composants/classroomInfo';
+import StudentHeader from '../components/studentHeader';
+import ClassroomInfo from '../components/classroomInfo';
 import '../style/global.scss';
 
 

@@ -1,27 +1,25 @@
-/*eslint-disable */
-import './App.css';
-import Booking from './pages/booking';
-import Connexion from './pages/connexion';
-import Inscription from './pages/inscription';
-import StudentDashboard from './pages/studentDashboard';
-import './style/global.scss';
+import './App.css'
+import Booking from './pages/booking'
+import Connexion from './pages/connexion'
+import Inscription from './pages/inscription'
+import StudentDashboard from './pages/studentDashboard'
+import './style/global.scss'
 import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link,
   Redirect
-} from "react-router-dom";
+} from 'react-router-dom'
 
 function App() {
   const token = localStorage.getItem('token :')
-  console.log(token)
   return (
     <div className="App">
+
       <Router>
-      <Switch>
+        <Switch>
           <Route exact path='/'>
-           {token ? <></> : <Redirect to="/connexion" />}
+            {token ? <></> : <Redirect to="/connexion" />}
           </Route>
           <Route path="/connexion">
             <Connexion />
