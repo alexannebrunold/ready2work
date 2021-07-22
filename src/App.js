@@ -3,7 +3,6 @@ import './App.css'
 import Booking from './pages/booking'
 import Connexion from './pages/connexion'
 import Inscription from './pages/inscription'
-import StudentDashboard from './pages/studentDashboard'
 import TeacherDashboard from './pages/teacherDashboard'
 import ClassroomMap from './pages/classroomMap'
 import './style/global.scss'
@@ -30,13 +29,10 @@ function App() {
             {token ? <Booking token={token}/> : <Redirect to="/" />}
           </Route>
           <Route path="/studentDashboard">
-          {token ? <StudentDashboard /> : <Redirect to="/" />}
+          {token ? <ClassroomMap /> : <Redirect to="/" />}
           </Route>
           <Route path="/teacherDashboard">
           {token ? <TeacherDashboard token={token}/> : <Redirect to="/" />}
-          </Route>
-          <Route path="/classroomMap">
-           {token ? <ClassroomMap /> : <Redirect to="/" />}
           </Route>
         </Switch>
       </Router>

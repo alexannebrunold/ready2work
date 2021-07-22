@@ -1,10 +1,36 @@
 /*eslint-disable */
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Table from '../components/table'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
-const Booking = ({token}) => {
-  console.log(token)
+const Booking = ({ token }) => {
+  const [futuresReservations, setFuturesReservations] = useState()
+
+  function getFuturesReservationsForCurrentRoom() {
+    fetch('https://ready2work-api.herokuapp.com/api/reservation', {
+      method: 'GET',
+      headers: {
+        'access-control-allow-origin': '*',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token
+      },
+    })
+      .then(res => {
+        return res.json()
+      })
+      .then(
+        (result) => {
+          setFuturesReservations(result.length > 0 ? result : null)
+        },
+        (error) => {
+          console.log(error)
+        }
+      )
+  }
+
+  useEffect(() => {
+    getFuturesReservationsForCurrentRoom()
+  }, [])
   return (
     <section className='page_booking'>
       <section className='content_menu'>
@@ -25,7 +51,7 @@ const Booking = ({token}) => {
       <section className='content_table mt-2'>
         <div>
           <h2>Mes Réservations</h2>
-          <Table className='mt-1' token={token}/>
+          <Table className='mt-1' token={token} futuresReservations={futuresReservations} />
         </div>
       </section>
     </section>

@@ -9,7 +9,7 @@ import moment from 'moment'
 
 const TeacherDashboard = ({ token }) => {
 
-  const number = 208
+  const number = 106
   const statut = 'reservée'
   const [isModalDisplayed, changeStateModal] = useState(false)
   const [futuresReservations, setFuturesReservations] = useState()
@@ -151,7 +151,7 @@ const TeacherDashboard = ({ token }) => {
           childToParent={childToParent}
         >
           <h1>Salle {number}</h1>
-          <p>Statut : {statut}</p>
+          <p>Statut : {futuresReservations? null :statut}</p>
 
           {isModalDisplayed === true ?
             <div className='rates'>
