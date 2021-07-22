@@ -43,7 +43,7 @@ const Connexion = () => {
         let token = data
         localStorage.setItem('token :', token)
         if (token != 'Login failed') {
-          window.location = '/'
+          window.location = '/classroomMap'
         }
         return !data.hasOwnProperty('error')
           ? setMessage(data.success)

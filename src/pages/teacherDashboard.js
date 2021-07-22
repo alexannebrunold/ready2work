@@ -7,9 +7,9 @@ import NoiseRates from '../components/noiseRates'
 import TemperatureRates from '../components/temperatureRates'
 import moment from 'moment'
 
-const TeacherDashboard = ({ token }) => {
+const TeacherDashboard = (props) => {
 
-  const [isModalDisplayed, changeStateModal] = useState(false)
+
   const [futuresReservations, setFuturesReservations] = useState()
   const [informationsForCurrentRoom, setInformationsForCurrentRoom] = useState()
   const [date, setDate] = useState()
@@ -22,21 +22,13 @@ const TeacherDashboard = ({ token }) => {
   const [roomNumber, setRoomNumber] = useState()
   const [noiseForCurrentRoom, setNoiseForCurrentRoom] = useState()
   const [temperatureForCurrentRoom, setTemperatureForCurrentRoom] = useState()
+  const token = localStorage.getItem('token :');
+  const isModalDisplayed = props.isModalDisplayed;
 
   function handleChange(event, state, value) {
     state(event.target.value)
     console.log(event.target.value)
     return value
-  }
-
-  console.log(token)
-
-  function displayedModal() {
-    return changeStateModal(!isModalDisplayed)
-  }
-
-  const childToParent = () => {
-    return changeStateModal(!isModalDisplayed)
   }
 
   function getFuturesReservationsForCurrentRoom() {
@@ -62,7 +54,7 @@ const TeacherDashboard = ({ token }) => {
   }
 
   function getInformationsForCurrentRoom() {
-    fetch('https://ready2work-api.herokuapp.com/api/room/B106', {
+    fetch('https://ready2work-api.herokuapp.com/api/room/' + props.targetRoom, {
       method: 'GET',
       headers: {
         'access-control-allow-origin': '*',
@@ -75,29 +67,6 @@ const TeacherDashboard = ({ token }) => {
       })
       .then(
         (result) => {
-          setInformationsForCurrentRoom(result)
-        },
-        (error) => {
-          console.log(error)
-        }
-      )
-  }
-
-  function getInformationsForCurrentRoom() {
-    fetch('https://ready2work-api.herokuapp.com/api/room/B106', {
-      method: 'GET',
-      headers: {
-        'access-control-allow-origin': '*',
-        'Content-Type': 'application/json',
-        'Authorization': 'Bearer ' + token
-      },
-    })
-      .then(res => {
-        return res.json()
-      })
-      .then(
-        (result) => {
-          console.log(result.brightness.value);
           setInformationsForCurrentRoom(result)
           setBrightnessForCurrentRoom(result.brightness.value)
           setRoomNumber(result.room.value)
@@ -113,7 +82,7 @@ const TeacherDashboard = ({ token }) => {
   function submitForm(e) {
     e.preventDefault()
     setSubmit(true)
-    fetch('https://ready2work-api.herokuapp.com/api/reservation/B106', {
+    fetch('https://ready2work-api.herokuapp.com/api/reservation/' + props.targetRoom, {
       method: 'POST',
       headers: {
         'access-control-allow-origin': '*',
@@ -154,9 +123,9 @@ const TeacherDashboard = ({ token }) => {
           : 'modal-invisible'}`}>
         <BaseModal
           modalIsDisplayed={isModalDisplayed}
-          childToParent={childToParent}
+          childToParent={props.childToParent}
         >
-          <h1 className='title'>Salle {roomNumber}</h1>
+          <h1 className='title'>Salle {props.targetRoom}</h1>
 
           {isModalDisplayed === true ?
             <div className='rates'>
@@ -220,11 +189,6 @@ const TeacherDashboard = ({ token }) => {
           </div>
         </BaseModal>
       </div>
-      <button
-        onClick={displayedModal}
-      >
-        Open modal
-      </button>
     </div>
   )
 }

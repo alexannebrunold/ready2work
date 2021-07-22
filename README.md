@@ -1,9 +1,20 @@
-Via une interface web, nous proposons la visualisation en direct de la fréquentation des salles d'une école par les élèves et les professeurs. 
+Nous voulons créer une application qui permette aux élèves de choisir l'ambiance de travail qui leur corresponde le mieux
+et ce grâce a 4 paramètres:
+-niveau de fréquentation
+-limunosité
+-chaleur
+-niveau sonore
+le but final serait que ces caractéristiques permettent d'influer sur l'ambiance de salle et de réaliser des economies energétiques d'un point de vue chauffage
+et lumière
+2 dashboards:
+-un pour les élèves qui leur permettrait d'inviter leur camarade a les rejoindre dans une salle
+-un pour les professeurs qui leur permettrait de réserver une salle pour un td/cours et d'y convoquer les élèves concernés
 
-Le but est d'établir l'emploi du temps en live de chaque salle consultable via l'interface. 2 caractéristiques sont à prendre en compte pour le déterminer :
 
-- Les réservations des salles par les prof via la plateforme. Un nombre de salles reste réservé aux élèves pour qu'ils puissent travailler à l'école.
+Installation:
 
-- La fréquentation des salles par les élèves déterminée par des capteurs de passage placé à chaque entrée de salle. 
+`npm install`
 
- Nous voulons aussi proposer des statistiques de fréquentation en fonction des jours afin d'orienter les professeurs dans la réservation des salles.
+To Start The Project:
+
+`npm start`

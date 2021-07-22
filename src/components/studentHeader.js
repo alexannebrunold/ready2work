@@ -12,7 +12,6 @@ const StudentHeader = () => {
           src={ NotificationBell }
           alt="Pictogramme cloche notifications"
         />
-        <img className="studentHeader-picture" alt="photo de profil"/>
         <p>Jones Ferdinand</p>
       </div>
     </section>

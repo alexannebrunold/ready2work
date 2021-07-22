@@ -2,13 +2,14 @@
 import { React, useEffect, useState } from 'react';
 
 const ClassroomMapFilter = (props) => {
-  const [classroomDataPers, setClassroomDataPers] = useState();
-  const [classroomDataTemperature, setClassroomDataTemperature] = useState();
-  const [classroomDataBrightness, setClassroomDataBrightness] = useState();
-  const [classroomDataNoise, setClassroomDataNoise] = useState();
+  const [classroomDataPers, setClassroomDataPers] = useState(null);
+  const [classroomDataTemperature, setClassroomDataTemperature] = useState(null);
+  const [classroomDataBrightness, setClassroomDataBrightness] = useState(null);
+  const [classroomDataNoise, setClassroomDataNoise] = useState(null);
   const [activeFilter, setActiveFilter] = useState('nbPeople');
   const [lowerScope, setLowerScope] = useState('0%');
   const [upperScope, setUpperScope] = useState('100%');
+  const token = localStorage.getItem('token :');
 
   function setScope(e) {
     setActiveFilter(e.target.value);
@@ -27,13 +28,14 @@ const ClassroomMapFilter = (props) => {
     }
   }
 
+
   function getClassroomInfoPers(){
     fetch("https://ready2work-api.herokuapp.com/api/room/nbPers", {
       method: 'GET',
       headers: {
         "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + props.studentToken
+        "Authorization": "Bearer " + props.token
       },
     })
     .then(res => {
@@ -54,7 +56,7 @@ const ClassroomMapFilter = (props) => {
       headers: {
         "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + props.studentToken
+        "Authorization": "Bearer " + props.token
       },
     })
     .then(res => {
@@ -75,7 +77,7 @@ const ClassroomMapFilter = (props) => {
       headers: {
         "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + props.studentToken
+        "Authorization": "Bearer " + props.token
       },
     })
     .then(res => {
@@ -96,7 +98,7 @@ const ClassroomMapFilter = (props) => {
       headers: {
         "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + props.studentToken
+        "Authorization": "Bearer " + props.token
       },
     })
     .then(res => {
@@ -112,64 +114,72 @@ const ClassroomMapFilter = (props) => {
     )
   }
   function filterPers() {
-    classroomDataPers.forEach(dataFilter => {
-      if (dataFilter.value <= 10) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
-      } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
-      } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
-      } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
-      } else if (dataFilter.value >= 41) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
-      }
-    });
+    if (classroomDataPers != null) {
+      classroomDataPers.forEach(dataFilter => {
+        if (dataFilter.value <= 10) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+        } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+        } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+        } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+        } else if (dataFilter.value >= 41) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+        }
+      });
+    }
   }
   function filterTemperature() {
-    classroomDataTemperature.forEach(dataFilter => {
-      if (dataFilter.value <= 10) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
-      } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
-      } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
-      } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
-      } else if (dataFilter.value >= 41) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
-      }
-    });
+    if (classroomDataTemperature != null) {
+      classroomDataTemperature.forEach(dataFilter => {
+        if (dataFilter.value <= 10) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+        } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+        } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+        } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+        } else if (dataFilter.value >= 41) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+        }
+      });
+    }
   }
   function filterBrightness() {
-    classroomDataBrightness.forEach(dataFilter => {
-      if (dataFilter.value <= 2000) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
-      } else if (dataFilter.value >=2001 && dataFilter.value <= 4000) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
-      } else if (dataFilter.value >= 4001 && dataFilter.value <= 6000) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
-      } else if (dataFilter.value >=6001 && dataFilter.value <= 8000) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
-      } else if (dataFilter.value >= 8001) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
-      }
-    });
+    if (classroomDataBrightness != null) {
+      classroomDataBrightness.forEach(dataFilter => {
+        if (dataFilter.value <= 2000) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+        } else if (dataFilter.value >=2001 && dataFilter.value <= 4000) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+        } else if (dataFilter.value >= 4001 && dataFilter.value <= 6000) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+        } else if (dataFilter.value >=6001 && dataFilter.value <= 8000) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+        } else if (dataFilter.value >= 8001) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+        }
+      });
+    }
   }
   function filterNoise() {
-    classroomDataNoise.forEach(dataFilter => {
-      if (dataFilter.value <= 24) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
-      } else if (dataFilter.value >=25 && dataFilter.value <= 49) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
-      } else if (dataFilter.value >= 50 && dataFilter.value <= 74) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
-      } else if (dataFilter.value >=75 && dataFilter.value <= 99) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
-      } else if (dataFilter.value >= 100) {
-        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
-      }
-    });
+    if (classroomDataNoise != null) {
+      classroomDataNoise.forEach(dataFilter => {
+        if (dataFilter.value <= 24) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+        } else if (dataFilter.value >=25 && dataFilter.value <= 49) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+        } else if (dataFilter.value >= 50 && dataFilter.value <= 74) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+        } else if (dataFilter.value >=75 && dataFilter.value <= 99) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+        } else if (dataFilter.value >= 100) {
+          document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+        }
+      });
+    }
   }
 
   function wrapperFunction(e) {
