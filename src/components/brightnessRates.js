@@ -4,16 +4,15 @@ import midLowBrigthness from '../assets/img/sun-mid-brightness.svg'
 import highLowBrigthness from '../assets/img/sun-high-brightness.svg'
 
 const BrightnessRates = (props) => {
-  const data = 'low'
   const [imgSrc, setImgSrc] = useState('')
-
+  console.log(props)
   function changeImage() {
-    switch (data) {
-    case 'low':
+    switch (props.brightnessRate) {
+    case props.brightnessRate < 1000:
       return setImgSrc(sunLowBrigthness)
-    case 'mid':
+    case 1000 > props.brightnessRate < 5000:
       return setImgSrc(midLowBrigthness)
-    case 'high':
+    case 5000 > props.brightnessRate < 10000:
       return setImgSrc(highLowBrigthness)
     }
   }
