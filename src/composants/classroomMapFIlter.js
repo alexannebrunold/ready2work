@@ -1,34 +1,39 @@
 /*eslint-disable */
 import { React, useEffect, useState } from 'react';
-import ClassroomInfo from './classroomInfo'
-import StudentHeader from './studentHeader'
 
-const ClassroomMapFilter = () => {
-
-  const studentToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6Ijc3MTBiMDE3ZmQ5YjcxMWUwMDljNmMzNmIwNzNiOGE2N2NiNjgyMTEiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQ29zbmVhdSBDaGFybGVzIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL21ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1ZCI6Im1ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1dGhfdGltZSI6MTYyNjgwNjcxNywidXNlcl9pZCI6InZ2dEZ3bWR5RERiYmFtSXpOYWtma3c4akN6MDMiLCJzdWIiOiJ2dnRGd21keUREYmJhbUl6TmFrZmt3OGpDejAzIiwiaWF0IjoxNjI2ODA2NzE3LCJleHAiOjE2MjY4MTAzMTcsImVtYWlsIjoiY2hhY2hvdWNoYWNob3VAYWRyZXNzLmZyIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImNoYWNob3VjaGFjaG91QGFkcmVzcy5mciJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.MEXBWWBusxCmoShF0l6-3zTEAIVDSumliD_pEGDjqOm_RVJI_2tBbr3AtZASIlh3OdsfnrkjKp508qcAun3MlwxY0xhMcSNME_YuNdWRQP4t3opVpwB-YNYyDzTjrTA_EvmEH6j1jzvesJvP9GuvDOkigRbFqwxbUunATO5SkmraRSwOzg4jWPNILEYX5FGC5yTfYI86drtOvpDMNqjmudi6ukkjpll6PPhw4GvgGrd8pSeR3yxWyAmn2jbXmo1K09FBYFlMd-aLbMo7ECC4U7aN9CIXvXALr_xP5wwp20423VkxfteQF9JvuTFkrXlwv5Z-QIyt5usjnku57dKspQ";
-
-  const [classroomData, setClassroomData] = useState({});
-  // verrifier qui est actif
+const ClassroomMapFilter = (props) => {
+  const [classroomDataPers, setClassroomDataPers] = useState();
+  const [classroomDataTemperature, setClassroomDataTemperature] = useState();
+  const [classroomDataBrightness, setClassroomDataBrightness] = useState();
+  const [classroomDataNoise, setClassroomDataNoise] = useState();
   const [activeFilter, setActiveFilter] = useState('nbPeople');
-  const isActiveFilter = (e) => {
+  const [lowerScope, setLowerScope] = useState('0%');
+  const [upperScope, setUpperScope] = useState('100%');
+
+  function setScope(e) {
     setActiveFilter(e.target.value);
-		console.log('blabla');
+    if (e.target.value == 'temperature') {
+      setLowerScope('10ºC');
+      setUpperScope('40ºC');
+    } else if (e.target.value == 'nbPeople') {
+      setLowerScope('0%');
+      setUpperScope('100%');
+    } else if (e.target.value == 'brightness') {
+      setLowerScope('Très sombre');
+      setUpperScope('Très lumineux');
+    } else if (e.target.value == 'noise') {
+      setLowerScope('0 décibel');
+      setUpperScope('120 décibel');
+    }
   }
-  console.log(activeFilter);
 
-	useEffect(() => {
-    isActiveFilter;
-    GetClassroomInfo();
-  }, []);
-  // fairer l'appel api en fonction de l'actif
-
-  function GetClassroomInfo(){
-    fetch("https://ready2work-api.herokuapp.com/api/room", {
+  function getClassroomInfoPers(){
+    fetch("https://ready2work-api.herokuapp.com/api/room/nbPers", {
       method: 'GET',
       headers: {
         "access-control-allow-origin" : "*",
         "Content-Type": "application/json",
-        "Authorization": "Bearer " + studentToken
+        "Authorization": "Bearer " + props.studentToken
       },
     })
     .then(res => {
@@ -36,37 +41,181 @@ const ClassroomMapFilter = () => {
     })
     .then(
       (result) => {
-        setClassroomData(result);
+        setClassroomDataPers(result);
       },
-      // Remarque : il faut gérer les erreurs ici plutôt que dans
-      // un bloc catch() afin que nous n’avalions pas les exceptions
-      // dues à de véritables bugs dans les composants.
       (error) => {
         console.log(error);
       }
     )
   }
-  GetClassroomInfo();
-  console.log(classroomData);
+  function getClassroomInfoTemperature(){
+    fetch("https://ready2work-api.herokuapp.com/api/room/temperature", {
+      method: 'GET',
+      headers: {
+        "access-control-allow-origin" : "*",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + props.studentToken
+      },
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(
+      (result) => {
+        setClassroomDataTemperature(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+  function getClassroomInfoBrightness(){
+    fetch("https://ready2work-api.herokuapp.com/api/room/luminosite", {
+      method: 'GET',
+      headers: {
+        "access-control-allow-origin" : "*",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + props.studentToken
+      },
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(
+      (result) => {
+        setClassroomDataBrightness(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+  function getClassroomInfoNoise(){
+    fetch("https://ready2work-api.herokuapp.com/api/room/decibel", {
+      method: 'GET',
+      headers: {
+        "access-control-allow-origin" : "*",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + props.studentToken
+      },
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(
+      (result) => {
+        setClassroomDataNoise(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+  function filterPers() {
+    classroomDataPers.forEach(dataFilter => {
+      if (dataFilter.value <= 10) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+      } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+      } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+      } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+      } else if (dataFilter.value >= 41) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+      }
+    });
+  }
+  function filterTemperature() {
+    classroomDataTemperature.forEach(dataFilter => {
+      if (dataFilter.value <= 10) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+      } else if (dataFilter.value >=11 && dataFilter.value <= 20) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+      } else if (dataFilter.value >= 21 && dataFilter.value <= 30) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+      } else if (dataFilter.value >=31 && dataFilter.value <= 40) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+      } else if (dataFilter.value >= 41) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+      }
+    });
+  }
+  function filterBrightness() {
+    classroomDataBrightness.forEach(dataFilter => {
+      if (dataFilter.value <= 2000) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+      } else if (dataFilter.value >=2001 && dataFilter.value <= 4000) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+      } else if (dataFilter.value >= 4001 && dataFilter.value <= 6000) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+      } else if (dataFilter.value >=6001 && dataFilter.value <= 8000) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+      } else if (dataFilter.value >= 8001) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+      }
+    });
+  }
+  function filterNoise() {
+    classroomDataNoise.forEach(dataFilter => {
+      if (dataFilter.value <= 24) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F6CCA4";
+      } else if (dataFilter.value >=25 && dataFilter.value <= 49) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#F8AF6C";
+      } else if (dataFilter.value >= 50 && dataFilter.value <= 74) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FA902F";
+      } else if (dataFilter.value >=75 && dataFilter.value <= 99) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FD6C3F";
+      } else if (dataFilter.value >= 100) {
+        document.querySelector('.classroom-' + dataFilter.room).style.fill = "#FE5B58";
+      }
+    });
+  }
+
+  function wrapperFunction(e) {
+    setScope(e);
+    if (e.target.value == 'nbPeople') {
+      filterPers();
+    } else if (e.target.value == 'temperature') {
+      filterTemperature();
+    } else if (e.target.value == 'brightness') {
+      filterBrightness();
+    } else if (e.target.value == 'noise') {
+      filterNoise();
+    }
+  }
+
+  useEffect(() => {
+    getClassroomInfoPers();
+    getClassroomInfoBrightness();
+    getClassroomInfoNoise();
+    getClassroomInfoTemperature();
+  }, []);
 
   return(
-    <div className="studentDashboard-filterMap">
-      <p className="filterMap-title">Trier par :</p>
-      <div>
-        <input type="radio" id="luminosite" name="filter" value="brightness" onChange={isActiveFilter} />
-        <label htmlFor="luminosite">Luminosité</label>
+    <div>
+      <div className="studentDashboard-scope">
+        <p className="scope-min">{ lowerScope }</p>
+        <p className="scope-max">{ upperScope }</p>
       </div>
-      <div>
-        <input type="radio" id="sonore" name="filter" value="noise" onChange={isActiveFilter} />
-        <label htmlFor="sonore">Niveau sonore</label>
-      </div>
-      <div>
-        <input type="radio" defaultChecked id="people" name="filter" value="nbPeople" onChange={isActiveFilter} />
-        <label htmlFor="people">Taux de fréquentation</label>
-      </div>
-      <div>
-        <input type="radio" id="temperature" name="filter" value="temperature" onChange={isActiveFilter} />
-        <label htmlFor="temperature">Température</label>
+      <div className="studentDashboard-filterMap">
+        <p className="filterMap-title">Trier par :</p>
+        <div>
+          <input type="radio" id="luminosite" name="filter" value="brightness" onChange={e => wrapperFunction(e)} />
+          <label htmlFor="luminosite">Luminosité</label>
+        </div>
+        <div>
+          <input type="radio" id="sonore" name="filter" value="noise" onChange={e => wrapperFunction(e)} />
+          <label htmlFor="sonore">Niveau sonore</label>
+        </div>
+        <div>
+          <input type="radio" defaultChecked id="people" name="filter" value="nbPeople" onChange={e => wrapperFunction(e)} />
+          <label htmlFor="people">Taux de fréquentation</label>
+        </div>
+        <div>
+          <input type="radio" id="temperature" name="filter" value="temperature" onChange={e => wrapperFunction(e)} />
+          <label htmlFor="temperature">Température</label>
+        </div>
       </div>
     </div>
   )

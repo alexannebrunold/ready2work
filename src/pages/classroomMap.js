@@ -1,5 +1,5 @@
 /*eslint-disable */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import StudentHeader from '../composants/studentHeader';
 import ClassroomInfo from '../composants/classroomInfo';
 import '../style/global.scss';
@@ -7,6 +7,44 @@ import ClassroomMapFilter from '../composants/classroomMapFIlter'
 
 
 const ClassroomMap = () => {
+  const [reservationClassroom, setReservationClassroom] = useState();
+  const [unavailableClassroom, setUnavailableClassroom] = useState();
+  const studentToken = "eyJhbGciOiJSUzI1NiIsImtpZCI6IjFiYjk2MDVjMzZlOThlMzAxMTdhNjk1MTc1NjkzODY4MzAyMDJiMmQiLCJ0eXAiOiJKV1QifQ.eyJuYW1lIjoiQ29zbmVhdSBDaGFybGVzIiwiaXNzIjoiaHR0cHM6Ly9zZWN1cmV0b2tlbi5nb29nbGUuY29tL21ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1ZCI6Im1ldGEtdGVycml0b3J5LTMwOTEwOCIsImF1dGhfdGltZSI6MTYyNjk2NDIwMSwidXNlcl9pZCI6InZ2dEZ3bWR5RERiYmFtSXpOYWtma3c4akN6MDMiLCJzdWIiOiJ2dnRGd21keUREYmJhbUl6TmFrZmt3OGpDejAzIiwiaWF0IjoxNjI2OTY0MjAxLCJleHAiOjE2MjY5Njc4MDEsImVtYWlsIjoiY2hhY2hvdWNoYWNob3VAYWRyZXNzLmZyIiwiZW1haWxfdmVyaWZpZWQiOmZhbHNlLCJmaXJlYmFzZSI6eyJpZGVudGl0aWVzIjp7ImVtYWlsIjpbImNoYWNob3VjaGFjaG91QGFkcmVzcy5mciJdfSwic2lnbl9pbl9wcm92aWRlciI6InBhc3N3b3JkIn19.cjhbgCJIPxy-D_E3canVSOJ7iDa7at3a5Cep64cG3ZDmFbr5E75y5ZxjCsl7PrTFf9YPWJeEhSdwPQ4mkT6M8tcDSujfl504-LZGAtiZdBI8y1bEON3Z4udI-DpFTd_4d__VPHv_EH1XSTYxUbjLGgqCLZDvceXYRMcW8p5Xvwr0HeBSfY36wPaxan1Ofl_InITELBR3Nb4NJt9xwmSXNilvfmZJtyn5YwOq842tMbcSI4cK3XPmwgP57b_anHDzqgLfY2YeWJrRfE-HcUw2-Qx1ZKwYi_WiY719Yt0VChCSePX_IR2ymESNZYyERnyiySJkOPng--gKWzvMPvzbzA";
+
+  function getUnavailableClassroom(){
+    fetch("https://ready2work-api.herokuapp.com/api/reservation", {
+      method: 'GET',
+      headers: {
+        "access-control-allow-origin" : "*",
+        "Content-Type": "application/json",
+        "Authorization": "Bearer " + studentToken
+      },
+    })
+    .then(res => {
+        return res.json();
+    })
+    .then(
+      (result) => {
+        setReservationClassroom(result);
+      },
+      (error) => {
+        console.log(error);
+      }
+    )
+  }
+
+  // function countUnavailableClassroom() {
+  //   reservationClassroom.forEach(reservation => {
+  //     setUnavailableClassroom(unavailableClassroom++);
+  //   });
+  // }
+
+  useEffect(() => {
+    getUnavailableClassroom();
+    // countUnavailableClassroom();
+  }, []);
+
+
   return (
     <section>
       <StudentHeader />
@@ -50,12 +88,8 @@ const ClassroomMap = () => {
           <path d="M1080.66 256.338H1074.21L1072.53 260H1070.08L1077.54 243.975L1084.74 260H1082.25L1080.66 256.338ZM1079.74 254.199L1077.5 249.072L1075.16 254.199H1079.74ZM1090.24 247.051H1087.64L1088.89 244.922H1092.52V260H1090.24V247.051ZM1099.66 247.051H1097.05L1098.3 244.922H1101.93V260H1099.66V247.051ZM1106.22 252.363C1106.22 249.961 1106.78 248.044 1107.9 246.611C1108.9 245.316 1110.12 244.668 1111.54 244.668C1112.97 244.668 1114.18 245.316 1115.19 246.611C1116.31 248.044 1116.87 249.993 1116.87 252.461C1116.87 254.922 1116.31 256.868 1115.19 258.301C1114.18 259.596 1112.97 260.244 1111.55 260.244C1110.13 260.244 1108.92 259.596 1107.9 258.301C1106.78 256.868 1106.22 254.889 1106.22 252.363ZM1108.46 252.373C1108.46 254.046 1108.75 255.436 1109.33 256.543C1109.91 257.63 1110.64 258.174 1111.54 258.174C1112.43 258.174 1113.17 257.63 1113.76 256.543C1114.35 255.462 1114.64 254.098 1114.64 252.451C1114.64 250.804 1114.35 249.437 1113.76 248.35C1113.17 247.269 1112.43 246.729 1111.54 246.729C1110.66 246.729 1109.92 247.269 1109.34 248.35C1108.75 249.424 1108.46 250.765 1108.46 252.373Z" fill="white"/>
         </svg>
       </div>
-      <div className="studentDashboard-scope">
-        <p className="scope-min">0</p>
-        <p className="scope-max">100</p>
-      </div>
-      <ClassroomMapFilter />
-      <ClassroomInfo />
+      <ClassroomMapFilter studentToken={studentToken} />
+      <ClassroomInfo  />
     </section>
   )
 }
