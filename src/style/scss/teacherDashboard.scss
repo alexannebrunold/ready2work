@@ -10,7 +10,7 @@
   text-align: left;
   h3 {
     font-size:20px;
-    color: $tertiary-colors;
+    color: $tertiary-color;
   }
   ul {
       display: flex;
@@ -19,7 +19,7 @@
       justify-content: space-between;
       width: 50%;
       li {
-        color: $tertiary-colors;
+        color: $tertiary-color;
         font-size: 16px;
       }
   }
@@ -36,11 +36,11 @@
   }
   input {
     border: 1px solid rgba(246, 204, 164, 1);
-    color: $tertiary-colors;
+    color: $tertiary-color;
     padding: 10px;
   }
   label {
-    color: $tertiary-colors;
+    color: $tertiary-color;
   }
   .checkbox {
     display: flex;
@@ -63,6 +63,7 @@
   .row_reservation_content {
     overflow-y: scroll;
   }
+}
 .title {
   font-size: 30px;
   color: $primary-color;

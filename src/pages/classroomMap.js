@@ -1,7 +1,6 @@
 /*eslint-disable */
 import React, { useState, useEffect } from 'react';
-import StudentHeader from '../composants/studentHeader';
-import ClassroomInfo from '../composants/classroomInfo';
+// import StudentHeader from '../composants/studentHeader';
 import '../style/global.scss';
 import ClassroomMapFilter from '../composants/classroomMapFIlter'
 
