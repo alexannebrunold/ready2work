@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react'
 import closeCross from '../assets/img/close-cross.svg'
 const BaseModal = ({ modalIsDisplayed, children, childToParent}) => {

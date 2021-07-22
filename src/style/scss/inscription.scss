@@ -78,4 +78,12 @@
             object-fit: cover;
         }
     }
+    .text_sous_submit {
+        font-size: 14px;
+        color: $tertiary-colors;
+        a {
+            color: $primary-colors;
+            text-decoration: none;
+        }
+    }
 }

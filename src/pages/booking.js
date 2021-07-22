@@ -1,13 +1,15 @@
+/*eslint-disable */
 import React from 'react'
 import Table from '../components/table'
 import {Link} from 'react-router-dom'
 
-const Booking = () => {
+const Booking = ({token}) => {
+  console.log(token)
   return (
     <section className='page_booking'>
       <section className='content_menu'>
         <div className='logo'>
-          <Link to='/home'>
+          <Link to='/teacherDashboard'>
             <p>Ready2Work</p>
           </Link>
         </div>
@@ -23,7 +25,7 @@ const Booking = () => {
       <section className='content_table mt-2'>
         <div>
           <h2>Mes Réservations</h2>
-          <Table className='mt-1'/>
+          <Table className='mt-1' token={token}/>
         </div>
       </section>
     </section>

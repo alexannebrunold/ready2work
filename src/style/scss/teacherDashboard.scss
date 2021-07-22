@@ -5,3 +5,62 @@
   justify-content: space-around;
   align-items: center;
 }
+
+.futures-reservations {
+  text-align: left;
+  h3 {
+    font-size:20px;
+    color: $tertiary-colors;
+  }
+  ul {
+      display: flex;
+      display: -webkit-flex;
+      display: -moz-flex;
+      justify-content: space-between;
+      width: 50%;
+      li {
+        color: $tertiary-colors;
+        font-size: 16px;
+      }
+  }
+  .form_date_content {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-flex;
+    align-items: center;
+    width: 50%;
+    justify-content: space-between;
+    label {
+      margin-right: 1rem;
+    }
+  }
+  input {
+    border: 1px solid rgba(246, 204, 164, 1);
+    color: $tertiary-colors;
+    padding: 10px;
+  }
+  label {
+    color: $tertiary-colors;
+  }
+  .checkbox {
+    display: flex;
+    display: -webkit-flex;
+    display: -moz-box;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .submit-button {
+    input {
+        background: linear-gradient(268.31deg, #FA8C28 33.09%, #FFD151 112.97%);
+        border: none;
+        border-radius: 100px;
+        padding: 10px;
+        color: $white;
+        font-size: 16px;
+    }
+  }
+  .row_reservation_content {
+    overflow-y: scroll;
+  }
+}

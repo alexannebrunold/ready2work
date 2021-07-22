@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React, { useState, useEffect } from 'react'
 import lowSound from '../assets/img/low-sound.svg'
 import midSound from '../assets/img/mid-sound.svg'

@@ -1,3 +1,4 @@
+/*eslint-disable */
 import React from 'react'
 import NotificationBell from '../assets/img/notification-bell.svg'
 
