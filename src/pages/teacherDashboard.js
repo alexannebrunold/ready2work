@@ -9,8 +9,6 @@ import moment from 'moment'
 
 const TeacherDashboard = ({ token }) => {
 
-  const number = 208
-  const statut = 'reservée'
   const [isModalDisplayed, changeStateModal] = useState(false)
   const [futuresReservations, setFuturesReservations] = useState()
   const [informationsForCurrentRoom, setInformationsForCurrentRoom] = useState()
@@ -99,7 +97,7 @@ const TeacherDashboard = ({ token }) => {
       })
       .then(
         (result) => {
-          console.log('RESULT', result);
+          console.log(result.brightness.value);
           setInformationsForCurrentRoom(result)
           setBrightnessForCurrentRoom(result.brightness.value)
           setRoomNumber(result.room.value)
@@ -164,7 +162,7 @@ const TeacherDashboard = ({ token }) => {
             <div className='rates'>
               <BrightnessRates
                 modalIsDisplayed={isModalDisplayed}
-                brightnessRate={informationsForCurrentRoom}
+                brightnessRate={brigthnessForCurrentRoom}
               />
               <NoiseRates modalIsDisplayed={isModalDisplayed} noiseRate={noiseForCurrentRoom}/>
               <TemperatureRates modalIsDisplayed={isModalDisplayed} temperatureRates={temperatureForCurrentRoom}/>
