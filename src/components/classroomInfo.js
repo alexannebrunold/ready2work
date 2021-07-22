@@ -86,4 +86,5 @@ const ClassroomInfo = (props) => {
     </div>
   )
 }
-export default ClassroomInfo;
+
+export default ClassroomInfo

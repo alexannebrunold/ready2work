@@ -9,14 +9,18 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
-  Link
-} from "react-router-dom";
+  Redirect
+} from 'react-router-dom'
 
 function App() {
+  const token = localStorage.getItem('token :')
   return (
     <div className="App">
       <Router>
         <Switch>
+          <Route exact path='/'>
+            {token ? <></> : <Redirect to="/connexion" />}
+          </Route>
           <Route path="/connexion">
             <Connexion />
           </Route>
@@ -24,7 +28,7 @@ function App() {
             <Inscription />
           </Route>
           <Route path="/booking">
-            <Booking />
+            {token ? <Booking /> : <Redirect to="/connexion" />}
           </Route>
           <Route path="/classroomMap">
             <ClassroomMap />

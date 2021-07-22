@@ -1,5 +1,5 @@
 import React from 'react'
-import Table from '../composants/table'
+import Table from '../components/table'
 import {Link} from 'react-router-dom'
 
 const Booking = () => {
