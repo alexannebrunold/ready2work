@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import InputForm from '../composants/inputForm'
-// import backgroundConnexion from '../assets/img/image_ready2work.png'
-// import { Link } from 'react-router-dom'
+import backgroundConnexion from '../assets/img/image_ready2work.png'
+import { Link } from 'react-router-dom'
 
 const Connexion = () => {
   const [mail, setMail] = useState()

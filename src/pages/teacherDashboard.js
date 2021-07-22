@@ -123,7 +123,7 @@ const TeacherDashboard = () => {
       <button
         onClick={displayedModal}
       >
-        Clique moi
+        Open modal
       </button>
     </div>
   )

@@ -15,7 +15,6 @@ function App() {
   const token = localStorage.getItem('token :')
   return (
     <div className="App">
-
       <Router>
         <Switch>
           <Route exact path='/'>
