@@ -1,5 +1,4 @@
-/*eslint-disable */
-import React from 'react';
+import React from 'react'
 import NotificationBell from '../assets/img/notification-bell.svg'
 
 const StudentHeader = () => {
@@ -18,4 +17,4 @@ const StudentHeader = () => {
     </section>
   )
 }
-export default StudentHeader;
+export default StudentHeader
