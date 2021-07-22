@@ -47,7 +47,8 @@ const Inscription = () => {
       <div className='information_content mt-2'>
         <div className='titre_intro_connexion'>
           <h1 className='mb-1'>Inscription</h1>
-          <p>Nous avons besoin de quelques informations pour vous laisser libre accès à la plateforme.</p>
+          <p>Nous avons besoin de quelques informations pour vous laisser libre accès à
+            la plateforme.</p>
         </div>
         <form className='inscription_form mt-2' onSubmit={e => submitForm(e)}>
           <InputForm  placeholder='Leblanc Justine'  className={'input-content mt-2'} label='Nom prénom' value={nom} type='text' handleChange={event => handleChange(event, setNom, nom)}/>
@@ -55,14 +56,20 @@ const Inscription = () => {
           <InputForm  placeholder='Au moins 8 caractères' className={'input-content mt-2'} label='Mot de passe' value={password} type='password' handleChange={event => handleChange(event, setPassword, password)}/>
           <div className={'input-content mt-2'}>
             <label>Vous êtes:</label>
-            <select onChange={event => handleChange(event, setStatut, statut)} value={statut} className='mt-1'>
+            <select
+              onChange={event => handleChange(event, setStatut, statut)}
+              value={statut}
+              className='mt-1'>
               <option>Un(e) élève</option>
               <option>Un Professeur</option>
             </select>
           </div>
           <InputForm  className={'mt-2 submit-button'} label='' value={'Inscription'} type='submit'/>
         </form>
-        <div className='text_sous_submit mt-1'>Vous avez déjà un compte? <Link to='/connexion'>Connectez vous.</Link></div>
+        <div className='text_sous_submit mt-1'>
+          Vous avez déjà un compte?
+          <Link to='/connexion'>Connectez vous.</Link>
+        </div>
       </div>
       <div className='image_content'>
         <img src={backgroundInscription} alt='image ready2'/>

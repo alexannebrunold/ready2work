@@ -63,4 +63,17 @@
   .row_reservation_content {
     overflow-y: scroll;
   }
+.title {
+  font-size: 30px;
+  color: $primary-color;
+  letter-spacing: 0.5px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.text-explication {
+font-size: 20px;
+  color: $primary-color;
+  letter-spacing: 0.5px;
+  font-weight: bold;
 }

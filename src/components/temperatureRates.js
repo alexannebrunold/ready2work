@@ -5,16 +5,15 @@ import midTemperature from '../assets/img/mid-temperature.svg'
 import highTemperature from '../assets/img/high-temperature.svg'
 
 const TemperatureRates = (props) => {
-  const data = 'low'
   const [imgSrc, setImgSrc] = useState('')
 
   function changeImage() {
-    switch (data) {
-    case 'low':
+    switch (props.temperatureRate !== undefined) {
+    case props.temperatureRate < 16.66:
       return setImgSrc(lowTemperature)
-    case 'mid':
+    case 16.66 > props.brightnessRate < 33.33:
       return setImgSrc(midTemperature)
-    case 'high':
+    case props.brightnessRate < 33.33:
       return setImgSrc(highTemperature)
     }
   }

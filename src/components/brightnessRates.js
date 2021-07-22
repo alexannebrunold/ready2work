@@ -6,9 +6,9 @@ import highLowBrigthness from '../assets/img/sun-high-brightness.svg'
 
 const BrightnessRates = (props) => {
   const [imgSrc, setImgSrc] = useState('')
-  console.log(props)
+
   function changeImage() {
-    switch (props.brightnessRate) {
+    switch (props.brightnessRate !== undefined) {
     case props.brightnessRate < 1000:
       return setImgSrc(sunLowBrigthness)
     case 1000 > props.brightnessRate < 5000:

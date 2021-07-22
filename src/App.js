@@ -13,10 +13,9 @@ import {
   Route,
   Redirect
 } from 'react-router-dom'
-import TeacherDashboard from './pages/teacherDashboard'
 
 function App() {
-  const token = localStorage.getItem('token :')
+  // const token = localStorage.getItem('token :')
   return (
     <div className="App">
       <Router>
