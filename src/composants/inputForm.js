@@ -1,4 +1,3 @@
-/*eslint-disable */
 import React from 'react'
 const InputForm = ({
   value, type, label, handleChange, handleClick, className, placeholder, required }) => {
