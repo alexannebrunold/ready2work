@@ -30,7 +30,7 @@ const Connexion = () => {
     fetch('https://ready2work-api.herokuapp.com/auth/user/login', {
       method: 'POST',
       headers: {
-        'access-control-allow-origin': '*',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ email: mail, password: password })
