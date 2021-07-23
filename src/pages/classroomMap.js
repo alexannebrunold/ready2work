@@ -22,7 +22,7 @@ const ClassroomMap = () => {
     fetch("https://ready2work-api.herokuapp.com/api/reservation", {
       method: 'GET',
       headers: {
-        "access-control-allow-origin" : "*",
+        "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + token
       },

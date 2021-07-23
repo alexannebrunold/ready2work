@@ -35,7 +35,7 @@ const TeacherDashboard = (props) => {
     fetch('https://ready2work-api.herokuapp.com/api/reservation', {
       method: 'GET',
       headers: {
-        'access-control-allow-origin': '*',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       },
@@ -57,7 +57,7 @@ const TeacherDashboard = (props) => {
     fetch('https://ready2work-api.herokuapp.com/api/room/' + props.targetRoom, {
       method: 'GET',
       headers: {
-        'access-control-allow-origin': '*',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token
       },
@@ -85,7 +85,7 @@ const TeacherDashboard = (props) => {
     fetch('https://ready2work-api.herokuapp.com/api/reservation/' + props.targetRoom, {
       method: 'POST',
       headers: {
-        'access-control-allow-origin': '*',
+        'Access-Control-Allow-Origin': '*',
         'Content-Type': 'application/json',
         'Authorization': 'Bearer ' + token,
         'Cache-Control': 'no-cache'

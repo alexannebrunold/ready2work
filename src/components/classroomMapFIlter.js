@@ -33,7 +33,7 @@ const ClassroomMapFilter = (props) => {
     fetch("https://ready2work-api.herokuapp.com/api/room/nbPers", {
       method: 'GET',
       headers: {
-        "access-control-allow-origin" : "*",
+        "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + props.token
       },
@@ -54,7 +54,7 @@ const ClassroomMapFilter = (props) => {
     fetch("https://ready2work-api.herokuapp.com/api/room/temperature", {
       method: 'GET',
       headers: {
-        "access-control-allow-origin" : "*",
+        "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + props.token
       },
@@ -75,7 +75,7 @@ const ClassroomMapFilter = (props) => {
     fetch("https://ready2work-api.herokuapp.com/api/room/luminosite", {
       method: 'GET',
       headers: {
-        "access-control-allow-origin" : "*",
+        "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + props.token
       },
@@ -96,7 +96,7 @@ const ClassroomMapFilter = (props) => {
     fetch("https://ready2work-api.herokuapp.com/api/room/decibel", {
       method: 'GET',
       headers: {
-        "access-control-allow-origin" : "*",
+        "Access-Control-Allow-Origin" : "*",
         "Content-Type": "application/json",
         "Authorization": "Bearer " + props.token
       },

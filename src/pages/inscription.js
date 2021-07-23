@@ -23,7 +23,7 @@ const Inscription = () => {
     fetch('https://ready2work-api.herokuapp.com/auth/user/register', {
       method: 'POST',
       headers: {
-        'access-control-allow-origin' : '*',
+        'Access-Control-Allow-Origin' : '*',
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({ name:nom, email:mail, password: password})
